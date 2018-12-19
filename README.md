@@ -44,6 +44,8 @@ To convert InfraGML data into CityGML, use the following command:
 ```
 python infra2citygml.py -i /path/to/InfraGMLfile/ -o /path/to/new/CityGMLfile/
 ```
+Note: By default, LOD1 model is generated while converting from InfraGML to CityGML.
+At this moment, the converter is not programmed to determine the surface semantics (roofs, walls, ground) & LODs.
 
 Mandatory:
 
@@ -68,6 +70,9 @@ To validate your InfraGML files against the schema you can use our [Validator](i
 python3 infragml_schema_validator.py -i /path/to/InfraGMLfile/
 ```
 Note: We introduced an additional wrapper schema [(infra.xsd)](schema/infragml-1_0_0/infra.xsd) to validate different LandInfra features (e.g. terrain, facilties, roads) within a single dataset.
+
+### Coming soon
+Support for converting features such as Roads, Railways, Water bodies, vegetation, etc. will be available soon.
 
 Conditions for use
 ---------------------
