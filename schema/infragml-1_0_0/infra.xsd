@@ -1,0 +1,49 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema" >
+
+ <import
+ 	namespace = "http://www.opengis.net/infragml/core/1.0"
+ 	schemaLocation="part0/1.0/core.xsd" />
+  <import
+ 	namespace = "http://www.opengis.net/infragml/landfeature/1.0"
+ 	schemaLocation="part1/1.0/landfeature.xsd" />
+ <import
+ 	namespace = "http://www.opengis.net/infragml/facility/1.0"
+ 	schemaLocation="part2/1.0/facility.xsd" />
+ <import
+ 	namespace = "http://www.opengis.net/infragml/project/1.0"
+ 	schemaLocation="part2/1.0/project.xsd" />
+ <import
+ 	namespace = "http://www.opengis.net/infragml/alignment/1.0"
+ 	schemaLocation="part3/1.0/alignment.xsd" />
+ <import
+ 	namespace = "http://www.opengis.net/infragml/road/1.0"
+ 	schemaLocation="part4/1.0/road.xsd" />
+ <import
+ 	namespace = "http://www.opengis.net/infragml/road-cross-section/1.0"
+ 	schemaLocation="part4/1.0/road-cross-section.xsd" />
+ <import
+ 	namespace = "http://www.opengis.net/infragml/railway/1.0"
+ 	schemaLocation="part5/1.0/railway.xsd" />
+ <import
+ 	namespace = "http://www.opengis.net/infragml/equipment/1.0"
+ 	schemaLocation="part6/1.0/equipment.xsd" />
+ <import
+ 	namespace = "http://www.opengis.net/infragml/observations/1.0"
+ 	schemaLocation="part6/1.0/observations.xsd" />
+<import
+ 	namespace = "http://www.opengis.net/infragml/sampling/1.0"
+ 	schemaLocation="part6/1.0/sampling.xsd" />
+<import
+ 	namespace = "http://www.opengis.net/infragml/survey/1.0"
+ 	schemaLocation="part6/1.0/survey.xsd" />
+<import
+ 	namespace = "http://www.opengis.net/infragml/survey-results/1.0"
+ 	schemaLocation="part6/1.0/survey-results.xsd" />
+ <import
+ 	namespace = "http://www.opengis.net/infragml/condominium/1.0"
+ 	schemaLocation="part7/1.0/condominium.xsd" />
+ <import
+ 	namespace = "http://www.opengis.net/infragml/land-division/1.0"
+ 	schemaLocation="part7/1.0/land-division.xsd" />
+
+</schema>

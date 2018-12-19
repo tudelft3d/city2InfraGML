@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<LandInfraDataset xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:gmllr="http://www.opengis.net/gml/3.3/lr" xmlns:li="http://www.opengis.net/infragml/core/1.0" xmlns:lif="http://www.opengis.net/infragml/facility/1.0" xmlns:lilf="http://www.opengis.net/infragml/landfeature/1.0" xmlns:tin="http://www.opengis.net/gml/3.3/tin" xmlns:xAL="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.opengis.net/infragml/core/1.0" xsi:schemaLocation="http://www.opengis.net/infragml/landfeature/1.0     http://schemas.opengis.net/infragml/part1/1.0/land-feature.xsd     http://www.opengis.net/infragml/core/1.0 http://schemas.opengis.net/infragml/part0/1.0/core.xsd     http://www.opengis.net/infragml/facility/1.0 http://schemas.opengis.net/infragml/part2/1.0/facility.xsd" gml:id="GML_776855f9-0f29-4cb9-b13d-337a1d074a7b">
+  <li:datasetID>
+    <li:ID>
+      <li:identifier>GML_776855f9-0f29-4cb9-b13d-337a1d074a7b</li:identifier>
+      <li:scope>OGC LandInfraSWG</li:scope>
+    </li:ID>
+  </li:datasetID>
+  <li:name>Simple 3D city model LOD1 without Appearance</li:name>
+  <li:description>Land Infra Dataset of terrain</li:description>
+  <li:dateTime>2018-12-19T12:05:52</li:dateTime>
+  <li:datasetVersion>1.0</li:datasetVersion>
+  <li:application>Generated using CityGML2InfraGML python utility</li:application>
+  <li:author>3D Geoinformation Group, TU Delft, the Netherlands</li:author>
+  <li:infraVersion>1.0</li:infraVersion>
+  <li:language>English</li:language>
+  <li:defaultCRS xlink:href="urn:ogc:def:crs,crs:EPSG::25832,crs:EPSG::5783"/>
+  <li:feature>
+    <lif:Facility gml:id="Facility_GML_7b1a5a6f-ddad-4c3d-a507-3eb9ee0a8e68">
+      <gml:name>Example Building LOD1 </gml:name>
+      <lif:facilityID>
+        <lif:ID>
+          <li:identifier>Facility_GML_7b1a5a6f-ddad-4c3d-a507-3eb9ee0a8e68</li:identifier>
+          <li:scope>OGC LandInfra SWG</li:scope>
+        </lif:ID>
+      </lif:facilityID>
+      <lif:type>Building</lif:type>
+      <lif:status xlink:href="http://www.opengis.net/infragml/facility/1.0/statusCodelist#existing" xlink:title="existing"/>
+      <lif:part xlink:href="#GML_7b1a5a6f-ddad-4c3d-a507-3eb9ee0a8e68"/>
+    </lif:Facility>
+  </li:feature>
+  <li:feature>
+    <lif:Building gml:id="GML_7b1a5a6f-ddad-4c3d-a507-3eb9ee0a8e68">
+      <gml:name>Example Building LOD1 </gml:name>
+      <li:spatialRepresentation>
+        <li:SpatialRepresentation>
+          <li:geometry>
+            <gml:Solid>
+              <gml:exterior>
+                <gml:Shell>
+                  <gml:surfaceMember>
+                    <gml:Polygon>
+                      <gml:exterior>
+                        <gml:LinearRing>
+                          <gml:posList> 458875.0 5438350.0 112.0 458885.0 5438350.0 112.0 458885.0 5438350.0 116.0 458875.0 5438350.0 116.0</gml:posList>
+                        </gml:LinearRing>
+                      </gml:exterior>
+                    </gml:Polygon>
+                  </gml:surfaceMember>
+                  <gml:surfaceMember>
+                    <gml:Polygon>
+                      <gml:exterior>
+                        <gml:LinearRing>
+                          <gml:posList> 458885.0 5438350.0 112.0 458885.0 5438355.0 112.0 458885.0 5438355.0 116.0 458885.0 5438350.0 116.0</gml:posList>
+                        </gml:LinearRing>
+                      </gml:exterior>
+                    </gml:Polygon>
+                  </gml:surfaceMember>
+                  <gml:surfaceMember>
+                    <gml:Polygon>
+                      <gml:exterior>
+                        <gml:LinearRing>
+                          <gml:posList> 458885.0 5438355.0 112.0 458875.0 5438355.0 112.0 458875.0 5438355.0 116.0 458885.0 5438355.0 116.0</gml:posList>
+                        </gml:LinearRing>
+                      </gml:exterior>
+                    </gml:Polygon>
+                  </gml:surfaceMember>
+                  <gml:surfaceMember>
+                    <gml:Polygon>
+                      <gml:exterior>
+                        <gml:LinearRing>
+                          <gml:posList> 458875.0 5438355.0 112.0 458875.0 5438350.0 112.0 458875.0 5438350.0 116.0 458875.0 5438355.0 116.0</gml:posList>
+                        </gml:LinearRing>
+                      </gml:exterior>
+                    </gml:Polygon>
+                  </gml:surfaceMember>
+                  <gml:surfaceMember>
+                    <gml:Polygon>
+                      <gml:exterior>
+                        <gml:LinearRing>
+                          <gml:posList> 458875.0 5438350.0 116.0 458885.0 5438350.0 116.0 458885.0 5438355.0 116.0 458875.0 5438355.0 116.0</gml:posList>
+                        </gml:LinearRing>
+                      </gml:exterior>
+                    </gml:Polygon>
+                  </gml:surfaceMember>
+                  <gml:surfaceMember>
+                    <gml:Polygon>
+                      <gml:exterior>
+                        <gml:LinearRing>
+                          <gml:posList> 458875.0 5438350.0 112.0 458875.0 5438355.0 112.0 458885.0 5438355.0 112.0 458885.0 5438350.0 112.0</gml:posList>
+                        </gml:LinearRing>
+                      </gml:exterior>
+                    </gml:Polygon>
+                  </gml:surfaceMember>
+                </gml:Shell>
+              </gml:exterior>
+            </gml:Solid>
+          </li:geometry>
+        </li:SpatialRepresentation>
+      </li:spatialRepresentation>
+      <lif:facilityPartID>
+        <lif:ID>
+          <li:identifier>GML_7b1a5a6f-ddad-4c3d-a507-3eb9ee0a8e68</li:identifier>
+          <li:scope>OGC LandInfra SWG</li:scope>
+        </lif:ID>
+      </lif:facilityPartID>
+      <lif:type xlink:href="http://www.opengis.net/infragml/facility/1.0/typeCodelist#Building" xlink:title="Building"/>
+      <lif:status xlink:href="http://www.opengis.net/infragml/facility/1.0/statusCodelist#Existing" xlink:title="Existing"/>
+    </lif:Building>
+  </li:feature>
+  <li:feature>
+    <lilf:LandSurface gml:id="GUID_04D4DsNGv1MfvYu5O3lkcW">
+      <gml:name>Ground</gml:name>
+      <lilf:state>existing</lilf:state>
+      <lilf:landSurfaceID>
+        <lilf:ID>
+          <li:identifier>GUID_04D4DsNGv1MfvYu5O3lkcW</li:identifier>
+          <li:scope>OGC LandInfra SWG</li:scope>
+        </lilf:ID>
+      </lilf:landSurfaceID>
+      <lilf:spatialRepresentation>
+        <tin:TIN>
+          <gml:patches>
+            <tin:SimpleTrianglePatch>
+              <gml:posList> 458868.0 5438362.0 112.0 458875.0 5438355.0 112.0 458883.0 5438362.0 114.0</gml:posList>
+            </tin:SimpleTrianglePatch>
+            <tin:SimpleTrianglePatch>
+              <gml:posList> 458875.0 5438355.0 112.0 458885.0 5438355.0 112.0 458883.0 5438362.0 114.0</gml:posList>
+            </tin:SimpleTrianglePatch>
+            <tin:SimpleTrianglePatch>
+              <gml:posList> 458883.0 5438362.0 114.0 458885.0 5438355.0 112.0 458892.0 5438362.0 112.0</gml:posList>
+            </tin:SimpleTrianglePatch>
+            <tin:SimpleTrianglePatch>
+              <gml:posList> 458885.0 5438355.0 112.0 458885.0 5438350.0 112.0 458892.0 5438362.0 112.0</gml:posList>
+            </tin:SimpleTrianglePatch>
+            <tin:SimpleTrianglePatch>
+              <gml:posList> 458885.0 5438350.0 112.0 458892.0 5438343.0 112.0 458892.0 5438362.0 112.0</gml:posList>
+            </tin:SimpleTrianglePatch>
+            <tin:SimpleTrianglePatch>
+              <gml:posList> 458875.0 5438350.0 112.0 458892.0 5438343.0 112.0 458885.0 5438350.0 112.0</gml:posList>
+            </tin:SimpleTrianglePatch>
+            <tin:SimpleTrianglePatch>
+              <gml:posList> 458868.0 5438343.0 112.0 458892.0 5438343.0 112.0 458875.0 5438350.0 112.0</gml:posList>
+            </tin:SimpleTrianglePatch>
+            <tin:SimpleTrianglePatch>
+              <gml:posList> 458868.0 5438343.0 112.0 458875.0 5438350.0 112.0 458875.0 5438355.0 112.0</gml:posList>
+            </tin:SimpleTrianglePatch>
+            <tin:SimpleTrianglePatch>
+              <gml:posList> 458868.0 5438343.0 112.0 458875.0 5438355.0 112.0 458868.0 5438362.0 112.0</gml:posList>
+            </tin:SimpleTrianglePatch>
+          </gml:patches>
+        </tin:TIN>
+      </lilf:spatialRepresentation>
+      <lilf:material>topsoil</lilf:material>
+    </lilf:LandSurface>
+  </li:feature>
+</LandInfraDataset>
