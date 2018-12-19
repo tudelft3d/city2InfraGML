@@ -20,7 +20,6 @@ Python packages:
 + [lxml](http://lxml.de)
 + [argparse](https://docs.python.org/3/library/argparse.html)
 + [time](https://docs.python.org/3/library/time.html)
-+ [Itertools](https://docs.python.org/3/library/itertools.html)
 + [uuid](https://docs.python.org/3/library/uuid.html)
 
 ### OS and Python version

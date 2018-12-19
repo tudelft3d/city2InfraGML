@@ -204,6 +204,7 @@ def citygml2infragml(inputfile,outputfile):
 
                 material = etree.SubElement(LandSurface, "{%s}material" % ns_lilf)
                 material.text = "topsoil"
+        
         if obj.find('{%s}Building' %ns_bldg) is not None:
             featureCountDict["buildingCount"] = featureCountDict["buildingCount"] + 1
             bldg1 = obj.find('{%s}Building' %ns_bldg)
@@ -251,8 +252,7 @@ def citygml2infragml(inputfile,outputfile):
                     fpart = etree.SubElement(facility, "{%s}part" % ns_lif)
                     fpart.attrib['{%s}href' % ns_xlink] = "#"+bpid
                     
-                    if bp.find('{%s}lod1Solid' %ns_bldg) or \
-                    bp.find('{%s}lod2Solid' %ns_bldg) is not None:
+                    if bp.find('{%s}lod1Solid' %ns_bldg) is not None:
                         bpfeature = etree.SubElement(LandInfraDataset, "{%s}feature" % nsinfra)
                         bp2 = etree.SubElement(bpfeature, "{%s}Building" % ns_lif)
                         bp2.attrib['{%s}id' % ns_gml32] = bpid
@@ -268,61 +268,36 @@ def citygml2infragml(inputfile,outputfile):
                         bpgeometry =  etree.SubElement(bpspatRep2, "{%s}geometry" % ns_li)
                         
                         if bp.find('.//{%s}Solid' %ns_gml) is not None:
-                            bpcitySolid = bp.find('.//{%s}Solid' %ns_gml)
+                            citysolid = bp.find('.//{%s}Solid' %ns_gml)
                             bpsolid =  etree.SubElement(bpgeometry, "{%s}Solid" % ns_gml32)
-                            bpexterior = etree.SubElement(bpsolid, "{%s}exterior" % ns_gml32)
-                            bpshell = etree.SubElement(bpexterior, "{%s}Shell" % ns_gml32)
-                            if bpcitySolid.findall(".//{%s}surfaceMember[@{%s}href]" % (ns_gml, ns_xlink)):
-                                for sm in bpcitySolid.findall(".//{%s}surfaceMember[@{%s}href]" % (ns_gml, ns_xlink)):
-                                    bpsurfaceMember = etree.SubElement(bpshell, "{%s}surfaceMember" %ns_gml32)
-                                    polygon = etree.SubElement(bpsurfaceMember, "{%s}Polygon" %ns_gml32)
+                            exterior = etree.SubElement(bpsolid, "{%s}exterior" % ns_gml32)
+                            shell = etree.SubElement(exterior, "{%s}Shell" % ns_gml32)
+                            if citysolid.findall(".//{%s}surfaceMember" % (ns_gml)):
+                                for sm in citysolid.findall(".//{%s}surfaceMember" % (ns_gml)):
+                                    surfaceMember = etree.SubElement(shell, "{%s}surfaceMember" %ns_gml32)
+                                    polygon = etree.SubElement(surfaceMember, "{%s}Polygon" %ns_gml32)
                                     polyext = etree.SubElement(polygon, "{%s}exterior" %ns_gml32)
                                     polylr = etree.SubElement(polyext, "{%s}LinearRing" %ns_gml32)
-                                    if bp.find(".//{%s}Polygon[@{%s}id]" % (ns_gml, ns_gml)) is not None:
-                                        bppoly = bp.find(".//{%s}Polygon[@{%s}id]" % (ns_gml, ns_gml))
-                                        if bppoly.find('.//{%s}posList' %ns_gml) is not None:
+                                    if sm.find('.//{%s}Polygon' %ns_gml) is not None:
+                                        bbpoly = sm.find('.//{%s}Polygon' %ns_gml)
+                                        if bbpoly.find('.//{%s}posList' %ns_gml) is not None:
                                             poslist = etree.SubElement(polylr, "{%s}posList" %ns_gml32)
-                                            posL = bppoly.find('.//{%s}posList' %ns_gml)
+                                            posL = bbpoly.find('.//{%s}posList' %ns_gml)
                                             coords = posL.text.split()
                                             newcoords = coords[:-3] 
                                             poslist.text = "" 
                                             for i in range(0, len(newcoords)):
                                                 poslist.text = poslist.text + " " + str(newcoords[i])
-                                            
-                                        elif bppoly.findall('.//{%s}pos' %ns_gml):
-                                            pls = bppoly.findall('.//{%s}pos' %ns_gml)
-                                            for posL in pls[:-1]:
+                            
+                                        elif bbpoly.findall('.//{%s}pos' %ns_gml):
+                                            pls = bbpoly.findall('.//{%s}pos' %ns_gml)
+                                            for posL in pls:
                                                 gmlpos = etree.SubElement(polylr, "{%s}pos" %ns_gml32)
                                                 coords = posL.text.split()
                                                 gmlpos.text = ""
                                                 for i in range(0, len(coords)):
                                                     gmlpos.text = gmlpos.text + " " + (coords[i])    
-                                                    
-                            else:                     
-                                for bpcityPolygon in bpcitySolid.findall('.//{%s}Polygon' %ns_gml):
-                                    bpsurfaceMember = etree.SubElement(bpshell, "{%s}surfaceMember" %ns_gml32)
-                                    polygon = etree.SubElement(bpsurfaceMember, "{%s}Polygon" %ns_gml32)
-                                    polyext = etree.SubElement(polygon, "{%s}exterior" %ns_gml32)
-                                    polylr = etree.SubElement(polyext, "{%s}LinearRing" %ns_gml32)
-                                    if bpcityPolygon.find('.//{%s}posList' %ns_gml) is not None:
-                                        poslist = etree.SubElement(polylr, "{%s}posList" %ns_gml32)
-                                        posL = bpcityPolygon.find('.//{%s}posList' %ns_gml)
-                                        coords = posL.text.split()
-                                        newcoords = coords[:-3] 
-                                        poslist.text = "" 
-                                        for i in range(0, len(newcoords)):
-                                            poslist.text = poslist.text + " " + str(newcoords[i])
-                            
-                                    elif bpcityPolygon.findall('.//{%s}pos' %ns_gml):
-                                        pls = bpcityPolygon.findall('.//{%s}pos' %ns_gml)
-                                        for posL in pls[:-1]:
-                                            gmlpos = etree.SubElement(polylr, "{%s}pos" %ns_gml32)
-                                            coords = posL.text.split()
-                                            gmlpos.text = ""
-                                            for i in range(0, len(coords)):
-                                                gmlpos.text = gmlpos.text + " " + (coords[i])
-                                    
-                        
+            
                         facilityPartID = etree.SubElement(bp2, "{%s}facilityPartID" % ns_lif)
                         bpID = etree.SubElement(facilityPartID, "{%s}ID" % ns_lif)
                         bpidentifier = etree.SubElement(bpID, "{%s}identifier" % nsinfra)
@@ -330,7 +305,7 @@ def citygml2infragml(inputfile,outputfile):
                         bpscope = etree.SubElement(bpID, "{%s}scope" % nsinfra)
                         bpscope.text = "OGC LandInfra SWG" 
                         bptype = etree.SubElement(bp2, "{%s}type" % ns_lif)
-                        bptype.attrib['{%s}href' % ns_xlink] = "http://www.opengis.net/infragml/facility/1.0/typeCodelist#BuildingPart"
+                        bptype.attrib['{%s}href' % ns_xlink] = "http://www.opengis.net/infragml/facility/1.0/typeCodelist#Building"
                         bptype.attrib['{%s}title' % ns_xlink] = "BuildingPart"
              
                         bpstatus = etree.SubElement(bp2, "{%s}status" % ns_lif)
@@ -340,14 +315,78 @@ def citygml2infragml(inputfile,outputfile):
                         else:
                             bpstatus.attrib['{%s}href' % ns_xlink] = "http://www.opengis.net/infragml/facility/1.0/statusCodelist#Existing"
                             bpstatus.attrib['{%s}title' % ns_xlink] = "Existing"
+                                    
+                        
+                    elif bp.find('{%s}lod2Solid' %ns_bldg) is not None:
+                        bpfeature = etree.SubElement(LandInfraDataset, "{%s}feature" % nsinfra)
+                        bp2 = etree.SubElement(bpfeature, "{%s}Building" % ns_lif)
+                        bp2.attrib['{%s}id' % ns_gml32] = bpid
+                        
+                        bpname = etree.SubElement(bp2, "{%s}name" % ns_gml32)
+                        if bp.find('{%s}name' %ns_gml) is not None:
+                            bpname.text=bp.find('{%s}name' %ns_gml).text
+                        else:
+                            bpname.text="Land Infra Facility Dataset"  
+            
+                        bpspatRep1 = etree.SubElement(bp2, "{%s}spatialRepresentation" % ns_li)
+                        bpspatRep2 = etree.SubElement(bpspatRep1, "{%s}SpatialRepresentation" % ns_li)
+                        bpgeometry =  etree.SubElement(bpspatRep2, "{%s}geometry" % ns_li)
+                        if bp.find('.//{%s}Solid' %ns_gml) is not None:
+                            citysolid = bp.find('.//{%s}Solid' %ns_gml)
+                            bpsolid =  etree.SubElement(bpgeometry, "{%s}Solid" % ns_gml32)
+                            exterior = etree.SubElement(bpsolid, "{%s}exterior" % ns_gml32)
+                            shell = etree.SubElement(exterior, "{%s}Shell" % ns_gml32)
+                
+                        if bp.findall('{%s}boundedBy' %ns_bldg):
+                            for bb in bp.findall('{%s}boundedBy' %ns_bldg):
+                                surfaceMember = etree.SubElement(shell, "{%s}surfaceMember" %ns_gml32)
+                                polygon = etree.SubElement(surfaceMember, "{%s}Polygon" %ns_gml32)
+                                polyext = etree.SubElement(polygon, "{%s}exterior" %ns_gml32)
+                                polylr = etree.SubElement(polyext, "{%s}LinearRing" %ns_gml32)
+                                if bb.find(".//{%s}Polygon[@{%s}id]" % (ns_gml, ns_gml)) is not None:
+                                    bbpoly = bb.find(".//{%s}Polygon[@{%s}id]" % (ns_gml, ns_gml))
+                                    if bbpoly.find('.//{%s}posList' %ns_gml) is not None:
+                                        poslist = etree.SubElement(polylr, "{%s}posList" %ns_gml32)
+                                        posL = bbpoly.find('.//{%s}posList' %ns_gml)
+                                        coords = posL.text.split()
+                                        newcoords = coords[:-3] 
+                                        poslist.text = "" 
+                                        for i in range(0, len(newcoords)):
+                                            poslist.text = poslist.text + " " + str(newcoords[i])
+                            
+                                    elif bbpoly.findall('.//{%s}pos' %ns_gml):
+                                        pls = bbpoly.findall('.//{%s}pos' %ns_gml)
+                                        for posL in pls:
+                                            gmlpos = etree.SubElement(polylr, "{%s}pos" %ns_gml32)
+                                            coords = posL.text.split()
+                                            gmlpos.text = ""
+                                            for i in range(0, len(coords)):
+                                                gmlpos.text = gmlpos.text + " " + (coords[i])         
+                    
+                        facilityPartID = etree.SubElement(bp2, "{%s}facilityPartID" % ns_lif)
+                        bpID = etree.SubElement(facilityPartID, "{%s}ID" % ns_lif)
+                        bpidentifier = etree.SubElement(bpID, "{%s}identifier" % nsinfra)
+                        bpidentifier.text = bpid 
+                        bpscope = etree.SubElement(bpID, "{%s}scope" % nsinfra)
+                        bpscope.text = "OGC LandInfra SWG" 
+                        bptype = etree.SubElement(bp2, "{%s}type" % ns_lif)
+                        bptype.attrib['{%s}href' % ns_xlink] = "http://www.opengis.net/infragml/facility/1.0/typeCodelist#Building"
+                        bptype.attrib['{%s}title' % ns_xlink] = "BuildingPart"
+             
+                        bpstatus = etree.SubElement(bp2, "{%s}status" % ns_lif)
+                        if bp.find('{%s}terminationDate' %ns) is not None:
+                            bpstatus.attrib['{%s}href' % ns_xlink] = "http://www.opengis.net/infragml/facility/1.0/statusCodelist#Dead"
+                            bpstatus.attrib['{%s}title' % ns_xlink] = "Dead"
+                        else:
+                            bpstatus.attrib['{%s}href' % ns_xlink] = "http://www.opengis.net/infragml/facility/1.0/statusCodelist#Existing"
+                            bpstatus.attrib['{%s}title' % ns_xlink] = "Existing"
+                                 
                             
             else:
                 fpart = etree.SubElement(facility, "{%s}part" % ns_lif)
                 fpart.attrib['{%s}href' % ns_xlink] = "#"+fdid1
             
-            
-            if bldg1.find('{%s}lod1Solid' %ns_bldg) or \
-            bldg1.find('{%s}lod2Solid' %ns_bldg) is not None:
+            if bldg1.find('{%s}lod2Solid' %ns_bldg) is not None:
                 bfeature = etree.SubElement(LandInfraDataset, "{%s}feature" % nsinfra)
                 bldg2 = etree.SubElement(bfeature, "{%s}Building" % ns_lif)
                 if bldg1.get("{%s}id" % ns_gml) is not None:
@@ -365,19 +404,84 @@ def citygml2infragml(inputfile,outputfile):
                 bspatRep2 = etree.SubElement(bspatRep1, "{%s}SpatialRepresentation" % ns_li)
                 bgeometry =  etree.SubElement(bspatRep2, "{%s}geometry" % ns_li)
                 if bldg1.find('.//{%s}Solid' %ns_gml) is not None:
-                    citySolid = bldg1.find('.//{%s}Solid' %ns_gml)
                     bsolid =  etree.SubElement(bgeometry, "{%s}Solid" % ns_gml32)
                     exterior = etree.SubElement(bsolid, "{%s}exterior" % ns_gml32)
                     shell = etree.SubElement(exterior, "{%s}Shell" % ns_gml32)
                     
-                    if citySolid.findall(".//{%s}surfaceMember[@{%s}href]" % (ns_gml, ns_xlink)):
-                        for sm in citySolid.findall(".//{%s}surfaceMember[@{%s}href]" % (ns_gml, ns_xlink)):
+                if bldg1.findall('{%s}boundedBy' %ns_bldg):
+                    for bb in bldg1.findall('{%s}boundedBy' %ns_bldg):
+                        surfaceMember = etree.SubElement(shell, "{%s}surfaceMember" %ns_gml32)
+                        polygon = etree.SubElement(surfaceMember, "{%s}Polygon" %ns_gml32)
+                        polyext = etree.SubElement(polygon, "{%s}exterior" %ns_gml32)
+                        polylr = etree.SubElement(polyext, "{%s}LinearRing" %ns_gml32)
+                        if bb.find(".//{%s}Polygon[@{%s}id]" % (ns_gml, ns_gml)) is not None:
+                            bbpoly = bb.find(".//{%s}Polygon[@{%s}id]" % (ns_gml, ns_gml))
+                            if bbpoly.find('.//{%s}posList' %ns_gml) is not None:
+                                poslist = etree.SubElement(polylr, "{%s}posList" %ns_gml32)
+                                posL = bbpoly.find('.//{%s}posList' %ns_gml)
+                                coords = posL.text.split()
+                                newcoords = coords[:-3] 
+                                poslist.text = "" 
+                                for i in range(0, len(newcoords)):
+                                    poslist.text = poslist.text + " " + str(newcoords[i])
+                            
+                            elif bbpoly.findall('.//{%s}pos' %ns_gml):
+                                pls = bbpoly.findall('.//{%s}pos' %ns_gml)
+                                for posL in pls:
+                                    gmlpos = etree.SubElement(polylr, "{%s}pos" %ns_gml32)
+                                    coords = posL.text.split()
+                                    gmlpos.text = ""
+                                    for i in range(0, len(coords)):
+                                        gmlpos.text = gmlpos.text + " " + (coords[i])         
+                    
+                facilityPartID = etree.SubElement(bldg2, "{%s}facilityPartID" % ns_lif)
+                bID = etree.SubElement(facilityPartID, "{%s}ID" % ns_lif)
+                bidentifier = etree.SubElement(bID, "{%s}identifier" % nsinfra)
+                bidentifier.text = bdid 
+                bscope = etree.SubElement(bID, "{%s}scope" % nsinfra)
+                bscope.text = "OGC LandInfra SWG" 
+                btype = etree.SubElement(bldg2, "{%s}type" % ns_lif)
+                btype.attrib['{%s}href' % ns_xlink] = "http://www.opengis.net/infragml/facility/1.0/typeCodelist#Building"
+                btype.attrib['{%s}title' % ns_xlink] = "Building"
+             
+                bstatus = etree.SubElement(bldg2, "{%s}status" % ns_lif)
+                if bldg1.find('{%s}terminationDate' %ns) is not None:
+                    bstatus.attrib['{%s}href' % ns_xlink] = "http://www.opengis.net/infragml/facility/1.0/statusCodelist#Dead"
+                    bstatus.attrib['{%s}title' % ns_xlink] = "Dead"
+                else:
+                    bstatus.attrib['{%s}href' % ns_xlink] = "http://www.opengis.net/infragml/facility/1.0/statusCodelist#Existing"
+                    bstatus.attrib['{%s}title' % ns_xlink] = "Existing"   
+            
+            elif bldg1.find('{%s}lod1Solid' %ns_bldg) is not None:
+                bfeature = etree.SubElement(LandInfraDataset, "{%s}feature" % nsinfra)
+                bldg2 = etree.SubElement(bfeature, "{%s}Building" % ns_lif)
+                if bldg1.get("{%s}id" % ns_gml) is not None:
+                    bdid = str(bldg1.get("{%s}id" % ns_gml))
+                else:
+                    bdid = "GML_"+str(uuid.uuid4())
+                bldg2.attrib['{%s}id' % ns_gml32] = bdid
+                bname = etree.SubElement(bldg2, "{%s}name" % ns_gml32)
+                if bldg1.find('{%s}name' %ns_gml) is not None:
+                    bname.text=bldg1.find('{%s}name' %ns_gml).text
+                else:
+                    bname.text="Land Infra Facility Dataset"  
+            
+                bspatRep1 = etree.SubElement(bldg2, "{%s}spatialRepresentation" % ns_li)
+                bspatRep2 = etree.SubElement(bspatRep1, "{%s}SpatialRepresentation" % ns_li)
+                bgeometry =  etree.SubElement(bspatRep2, "{%s}geometry" % ns_li)
+                if bldg1.find('.//{%s}Solid' %ns_gml) is not None:
+                    citysolid = bldg1.find('.//{%s}Solid' %ns_gml)
+                    bsolid =  etree.SubElement(bgeometry, "{%s}Solid" % ns_gml32)
+                    exterior = etree.SubElement(bsolid, "{%s}exterior" % ns_gml32)
+                    shell = etree.SubElement(exterior, "{%s}Shell" % ns_gml32)
+                    if citysolid.findall(".//{%s}surfaceMember" % (ns_gml)):
+                        for sm in citysolid.findall(".//{%s}surfaceMember" % (ns_gml)):
                             surfaceMember = etree.SubElement(shell, "{%s}surfaceMember" %ns_gml32)
                             polygon = etree.SubElement(surfaceMember, "{%s}Polygon" %ns_gml32)
                             polyext = etree.SubElement(polygon, "{%s}exterior" %ns_gml32)
                             polylr = etree.SubElement(polyext, "{%s}LinearRing" %ns_gml32)
-                            if bldg1.find(".//{%s}Polygon[@{%s}id]" % (ns_gml, ns_gml)) is not None:
-                                bbpoly = bldg1.find(".//{%s}Polygon[@{%s}id]" % (ns_gml, ns_gml))
+                            if sm.find('.//{%s}Polygon' %ns_gml) is not None:
+                                bbpoly = sm.find('.//{%s}Polygon' %ns_gml)
                                 if bbpoly.find('.//{%s}posList' %ns_gml) is not None:
                                     poslist = etree.SubElement(polylr, "{%s}posList" %ns_gml32)
                                     posL = bbpoly.find('.//{%s}posList' %ns_gml)
@@ -389,35 +493,12 @@ def citygml2infragml(inputfile,outputfile):
                             
                                 elif bbpoly.findall('.//{%s}pos' %ns_gml):
                                     pls = bbpoly.findall('.//{%s}pos' %ns_gml)
-                                    for posL in pls[:-1]:
+                                    for posL in pls:
                                         gmlpos = etree.SubElement(polylr, "{%s}pos" %ns_gml32)
                                         coords = posL.text.split()
                                         gmlpos.text = ""
                                         for i in range(0, len(coords)):
-                                            gmlpos.text = gmlpos.text + " " + (coords[i])                            
-                    else:                        
-                        for cityPolygon in citySolid.findall('.//{%s}Polygon' %ns_gml):
-                            surfaceMember = etree.SubElement(shell, "{%s}surfaceMember" %ns_gml32)
-                            polygon = etree.SubElement(surfaceMember, "{%s}Polygon" %ns_gml32)
-                            polyext = etree.SubElement(polygon, "{%s}exterior" %ns_gml32)
-                            polylr = etree.SubElement(polyext, "{%s}LinearRing" %ns_gml32)
-                            if cityPolygon.find('.//{%s}posList' %ns_gml) is not None:
-                                poslist = etree.SubElement(polylr, "{%s}posList" %ns_gml32)
-                                posL = cityPolygon.find('.//{%s}posList' %ns_gml)
-                                coords = posL.text.split()
-                                newcoords = coords[:-3] 
-                                poslist.text = "" 
-                                for i in range(0, len(newcoords)):
-                                    poslist.text = poslist.text + " " + str(newcoords[i])
-                            
-                            elif cityPolygon.findall('.//{%s}pos' %ns_gml):
-                                pls = cityPolygon.findall('.//{%s}pos' %ns_gml)
-                                for posL in pls[:-1]:
-                                    gmlpos = etree.SubElement(polylr, "{%s}pos" %ns_gml32)
-                                    coords = posL.text.split()
-                                    gmlpos.text = ""
-                                    for i in range(0, len(coords)):
-                                        gmlpos.text = gmlpos.text + " " + (coords[i])
+                                            gmlpos.text = gmlpos.text + " " + (coords[i])    
             
                 facilityPartID = etree.SubElement(bldg2, "{%s}facilityPartID" % ns_lif)
                 bID = etree.SubElement(facilityPartID, "{%s}ID" % ns_lif)
@@ -435,7 +516,8 @@ def citygml2infragml(inputfile,outputfile):
                     bstatus.attrib['{%s}title' % ns_xlink] = "Dead"
                 else:
                     bstatus.attrib['{%s}href' % ns_xlink] = "http://www.opengis.net/infragml/facility/1.0/statusCodelist#Existing"
-                    bstatus.attrib['{%s}title' % ns_xlink] = "Existing"
+                    bstatus.attrib['{%s}title' % ns_xlink] = "Existing"   
+            
             
     print ("\n# of ReliefFeature(s): ", featureCountDict["reliefCount"])
     print ("# of TINRelief(s): ", featureCountDict["tinreliefCount"])
