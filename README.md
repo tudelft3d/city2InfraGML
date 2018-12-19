@@ -68,7 +68,7 @@ To validate your InfraGML files against the schema you can use our [Validator](i
 ```
 python3 infragml_schema_validator.py -i /path/to/InfraGMLfile/
 ```
-Note: We introduced an additional wrapper schema (infra.xsd) to validate different LandInfra features (e.g. terrain, facilties, roads) within a single dataset.
+Note: We introduced an additional wrapper schema [(infra.xsd)](schema/infragml-1_0_0/infra.xsd) to validate different LandInfra features (e.g. terrain, facilties, roads) within a single dataset.
 
 Conditions for use
 ---------------------
