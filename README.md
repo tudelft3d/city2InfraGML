@@ -42,7 +42,7 @@ python3 city2infragml.py -i /path/to/CityGMLfile/ -o /path/to/new/InfraGMLfile/
 To convert InfraGML data into CityGML, use the following command:
 
 ```
-python infra2citygml.py -i /path/to/InfraGMLfile/ -o /path/to/new/CityGMLfile/
+python3 infra2citygml.py -i /path/to/InfraGMLfile/ -o /path/to/new/CityGMLfile/
 ```
 Note: By default, LOD1 model is generated while converting from InfraGML to CityGML.
 At this moment, the converter is not programmed to determine the surface semantics (roofs, walls, ground) & LODs.
