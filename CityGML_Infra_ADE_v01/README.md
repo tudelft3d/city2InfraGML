@@ -7,13 +7,13 @@ Extension for modelling LandInfra features in CityGML.
 # Resources
 
 The **UML model** of the Infra ADE was created using Enterprise Architect.  
-- This [Enterprise Architect file](/UML/CityGML_Infra_ADE.eap) contains the UML model.
+- This [Enterprise Architect file](https://github.com/tudelft3d/city2InfraGML/blob/master/CityGML_Infra_ADE_v01/UML/CityGML_Infra_ADE_v01.eap) contains the UML model.
 - Full UML diagrams in PDF format: Coming soon...
 
 The **XML Schema file and codelists** of the Infraa ADE were derived automatically from the UML model using ShapeChange(http://shapechange.net/).  
-- This is the derived [XML Schema file](XSD/CityGML_Infra_ADE.xsd) for 3DMD ADE.
+- This is the derived [XML Schema file](https://github.com/tudelft3d/city2InfraGML/blob/master/CityGML_Infra_ADE_v01/XSDandSampleData/CityGML_Infra_ADE.xsd) for the Infra ADE.
 - Browsable schema for the ADE: Coming soon...
-- Codelists can be accessed here [Codelists](/XSD/codelists).
+- Codelists can be accessed here [Codelists](https://github.com/tudelft3d/city2InfraGML/tree/master/CityGML_Infra_ADE_v01/XSDandSampleData/codelists).
 
 # More information
 
