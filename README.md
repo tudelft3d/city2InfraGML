@@ -1,5 +1,5 @@
 # CityGML2InfraGML
-An experimental python utility to convert CityGML datasets to infraGML and vice versa.
+An experimental python utility to convert CityGML datasets to InfraGML and vice versa.
 
 Things to know
 ---------------
