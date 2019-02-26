@@ -1,0 +1,28 @@
+<?xml-stylesheet type='text/xsl' href='./CodelistDictionary-v32.xsl'?><Dictionary xmlns="http://www.opengis.net/gml" xmlns:gml="http://www.opengis.net/gml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" gml:id="StringType" xsi:schemaLocation="http://www.opengis.net/gml null">
+  <identifier codeSpace="http://godzilla.bk.tudelft.nl/schemas/infraADE">StringType</identifier>
+  <dictionaryEntry>
+    <Definition gml:id="_9137_11812">
+      <identifier codeSpace="http://godzilla.bk.tudelft.nl/schemas/infraADE/StringType">unstructured</identifier>
+    </Definition>
+  </dictionaryEntry>
+  <dictionaryEntry>
+    <Definition gml:id="_9137_11813">
+      <identifier codeSpace="http://godzilla.bk.tudelft.nl/schemas/infraADE/StringType">structured</identifier>
+    </Definition>
+  </dictionaryEntry>
+  <dictionaryEntry>
+    <Definition gml:id="_9137_11814">
+      <identifier codeSpace="http://godzilla.bk.tudelft.nl/schemas/infraADE/StringType">topological</identifier>
+    </Definition>
+  </dictionaryEntry>
+  <dictionaryEntry>
+    <Definition gml:id="_9137_11815">
+      <identifier codeSpace="http://godzilla.bk.tudelft.nl/schemas/infraADE/StringType">partial</identifier>
+    </Definition>
+  </dictionaryEntry>
+  <dictionaryEntry>
+    <Definition gml:id="_9137_11816">
+      <identifier codeSpace="http://godzilla.bk.tudelft.nl/schemas/infraADE/StringType">ring</identifier>
+    </Definition>
+  </dictionaryEntry>
+</Dictionary>

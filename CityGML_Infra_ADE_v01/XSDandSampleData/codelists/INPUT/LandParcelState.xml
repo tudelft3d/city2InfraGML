@@ -1,0 +1,33 @@
+<?xml-stylesheet type='text/xsl' href='./CodelistDictionary-v32.xsl'?><Dictionary xmlns="http://www.opengis.net/gml" xmlns:gml="http://www.opengis.net/gml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" gml:id="LandParcelState" xsi:schemaLocation="http://www.opengis.net/gml null">
+  <identifier codeSpace="http://godzilla.bk.tudelft.nl/schemas/infraADE">LandParcelState</identifier>
+  <dictionaryEntry>
+    <Definition gml:id="_9136_11819">
+      <identifier codeSpace="http://godzilla.bk.tudelft.nl/schemas/infraADE/LandParcelState">firstRegistration</identifier>
+    </Definition>
+  </dictionaryEntry>
+  <dictionaryEntry>
+    <Definition gml:id="_9136_11820">
+      <identifier codeSpace="http://godzilla.bk.tudelft.nl/schemas/infraADE/LandParcelState">transitory</identifier>
+    </Definition>
+  </dictionaryEntry>
+  <dictionaryEntry>
+    <Definition gml:id="_9136_11821">
+      <identifier codeSpace="http://godzilla.bk.tudelft.nl/schemas/infraADE/LandParcelState">current</identifier>
+    </Definition>
+  </dictionaryEntry>
+  <dictionaryEntry>
+    <Definition gml:id="_9136_11822">
+      <identifier codeSpace="http://godzilla.bk.tudelft.nl/schemas/infraADE/LandParcelState">carrierParcel</identifier>
+    </Definition>
+  </dictionaryEntry>
+  <dictionaryEntry>
+    <Definition gml:id="_9136_11823">
+      <identifier codeSpace="http://godzilla.bk.tudelft.nl/schemas/infraADE/LandParcelState">mainParcel</identifier>
+    </Definition>
+  </dictionaryEntry>
+  <dictionaryEntry>
+    <Definition gml:id="_9136_11824">
+      <identifier codeSpace="http://godzilla.bk.tudelft.nl/schemas/infraADE/LandParcelState">extinguished</identifier>
+    </Definition>
+  </dictionaryEntry>
+</Dictionary>
