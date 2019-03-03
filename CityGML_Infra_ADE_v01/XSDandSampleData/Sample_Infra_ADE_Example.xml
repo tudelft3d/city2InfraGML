@@ -163,6 +163,13 @@
 					</xalAddress>
 				</Address>
 			</bldg:address>
+			<infra:buildingID>
+				<infra:ID>
+					<infra:identifier>UUID_25a09212-22b1-4374-ae9a-8ab9c30668b1</infra:identifier>
+				</infra:ID>
+			</infra:buildingID>
+			<infra:buildingState>existing</infra:buildingState>
+			<infra:buildingStatus>constructed</infra:buildingStatus>
 		</bldg:Building>
 	</cityObjectMember>
 	
@@ -27191,6 +27198,48 @@
 			</infra:roadID>
 			<infra:approximateWidth uom="m">5</infra:approximateWidth>
 			<infra:roadElement xlink:href="#re1"></infra:roadElement>
+			<infra:roadAlignment xlink:href="#Alignment1"></infra:roadAlignment>
+			<infra:roadElement>
+				<infra:RoadElement>
+					<gml:description>6.5 cm asphalt top surface course</gml:description>
+					<gml:name>top pavement layer</gml:name>
+					<infra:state>existing</infra:state>
+					<infra:spatialRepresentation>
+						<infra:PolyfaceMesh gml:id="pmesh1">
+							<infra:indexedPointList>
+								<infra:IndexedPoint>
+									<infra:index>1</infra:index>
+									<infra:coordinates>-3.650 1100 48.927</infra:coordinates>
+								</infra:IndexedPoint>
+							</infra:indexedPointList>
+							<infra:indexedPointList>
+								<infra:IndexedPoint>
+									<infra:index>2</infra:index>
+									<infra:coordinates>0.000 1100 49.000</infra:coordinates>
+								</infra:IndexedPoint>
+							</infra:indexedPointList>
+							<infra:indexedPointList>
+								<infra:IndexedPoint>
+									<infra:index>3</infra:index>
+									<infra:coordinates>3.650 1100 48.927</infra:coordinates>
+								</infra:IndexedPoint>
+							</infra:indexedPointList>
+							<infra:simpleIndexedPolygonList>
+								<infra:SimpleIndexedPolygon>
+									<infra:pointIndex>1 2 3</infra:pointIndex>
+								</infra:SimpleIndexedPolygon>
+							</infra:simpleIndexedPolygonList>
+						</infra:PolyfaceMesh>
+					</infra:spatialRepresentation>
+					<infra:roadElementID>
+						<infra:ID>
+							<infra:identifier>pavement1</infra:identifier>
+						</infra:ID>
+					</infra:roadElementID>
+					<infra:roadElementType>Pavement Surface Course</infra:roadElementType>
+					<infra:material>asphalt</infra:material>
+				</infra:RoadElement>
+			</infra:roadElement>
 		</tran:Road>
 	</cityObjectMember>
 	
@@ -27275,17 +27324,220 @@
 		</infra:Project>
 	</cityObjectMember>
 	
+	<!-- ============================================================================================ -->
+	<!-- ============================= LandInfra Alignment in the ADE  ============================== -->
+	<!-- ============================================================================================ -->
+	
+	<cityObjectMember>
+		<infra:Alignment>
+			<infra:state>existing</infra:state>
+			<infra:alignmentID>
+				<infra:ID>
+					<infra:identifier>Alignment1</infra:identifier>
+				</infra:ID>
+			</infra:alignmentID>
+			<infra:purpose>roadway centerline</infra:purpose>
+			<infra:designAlternative>DesignA</infra:designAlternative>
+			<infra:linestring2DRepresentation gml:id="l2D">
+				<gml:pos>0 1000</gml:pos>
+				<gml:pos>0 1100</gml:pos>
+			</infra:linestring2DRepresentation>
+			<infra:linestring3DRepresentation gml:id="l3D">
+				<gml:pos>0 1000 50</gml:pos>
+				<gml:pos>0 1100 49</gml:pos>
+			</infra:linestring3DRepresentation>
+			<infra:horizontal>
+				<infra:Alignment2dHorizontal>
+					<infra:location>road centerline</infra:location>
+					<infra:state>existing</infra:state>
+					<infra:segment>
+						<infra:HorizontalSegment2d>
+							<infra:tangentialContinuity>true</infra:tangentialContinuity>
+							<infra:geometry>
+								<infra:CurveHorizontalSegment2d>
+									<infra:lineSegment>
+										<gml:pos>0 1000</gml:pos>
+										<gml:pos>0 1100</gml:pos>
+									</infra:lineSegment>
+								</infra:CurveHorizontalSegment2d>
+							</infra:geometry>
+						</infra:HorizontalSegment2d>
+					</infra:segment>
+					<infra:segment>
+						<infra:HorizontalSegment2d>
+							<infra:tangentialContinuity>true</infra:tangentialContinuity>
+							<infra:geometry>
+								<infra:CurveHorizontalSegment2d>
+									<infra:clothoidArcSegment>
+										<gml:refLocation>
+											<gml:AffinePlacement>
+												<gml:location></gml:location>
+												<gml:refDirection></gml:refDirection>
+												<gml:inDimension>2</gml:inDimension>
+												<gml:outDimension>2</gml:outDimension>
+											</gml:AffinePlacement>
+										</gml:refLocation>
+										<gml:scaleFactor>1</gml:scaleFactor>
+										<gml:startParameter>1</gml:startParameter>
+										<gml:endParameter>1</gml:endParameter>
+									</infra:clothoidArcSegment>
+								</infra:CurveHorizontalSegment2d>
+							</infra:geometry>
+						</infra:HorizontalSegment2d>
+					</infra:segment>
+					<infra:segment>
+						<infra:HorizontalSegment2d>
+							<infra:tangentialContinuity>true</infra:tangentialContinuity>
+							<infra:geometry>
+								<infra:CurveHorizontalSegment2d>
+									<infra:circularArcSegment>
+										<infra:CircularArcSegmentType>
+											<infra:circularArcByCenterPoint numArc="1">
+												<gml:pos></gml:pos>
+												<gml:radius uom="m">1</gml:radius>
+												<gml:startAngle uom="d">1</gml:startAngle>
+												<gml:endAngle uom="d">1</gml:endAngle>
+											</infra:circularArcByCenterPoint>
+										</infra:CircularArcSegmentType>
+									</infra:circularArcSegment>
+								</infra:CurveHorizontalSegment2d>
+							</infra:geometry>
+						</infra:HorizontalSegment2d>
+					</infra:segment>
+					<infra:segment>
+						<infra:HorizontalSegment2d>
+							<infra:tangentialContinuity>true</infra:tangentialContinuity>
+							<infra:geometry>
+								<infra:CurveHorizontalSegment2d>
+									<infra:transitionSegment>
+										<infra:TransitionCurve>
+											<infra:referenceLocation>
+												<gml:location></gml:location>
+												<gml:refDirection></gml:refDirection>
+												<gml:inDimension>2</gml:inDimension>
+												<gml:outDimension>2</gml:outDimension>
+											</infra:referenceLocation>
+											<infra:length uom="m">1</infra:length>
+											<infra:startCurvature>1</infra:startCurvature>
+											<infra:endCurvature>1</infra:endCurvature>
+											<infra:transitionType>Bloss</infra:transitionType>
+										</infra:TransitionCurve>
+									</infra:transitionSegment>
+								</infra:CurveHorizontalSegment2d>
+							</infra:geometry>
+						</infra:HorizontalSegment2d>
+					</infra:segment>
+				</infra:Alignment2dHorizontal>
+			</infra:horizontal>
+		</infra:Alignment>
+	</cityObjectMember>
+
+	<!-- ============================================================================================ -->
+	<!-- ============================== LandInfra LandLayer in the ADE  ============================= -->
+	<!-- ============================================================================================ -->
+	
+	<cityObjectMember>
+		<infra:SolidLayer>
+			<infra:state>existing</infra:state>
+			<infra:spatialRepresentation xlink:href="#pmesh1">
+			</infra:spatialRepresentation>
+			<infra:solidLayerID>
+				<infra:ID>
+					<infra:identifier>Sol1</infra:identifier>
+				</infra:ID>
+			</infra:solidLayerID>
+			<infra:material>topsoil</infra:material>
+		</infra:SolidLayer>
+	</cityObjectMember>
 	
 	<!-- ============================================================================================ -->
 	<!-- ======================== LandInfra LandUse in the ADE coming soon  ========================= -->
 	<!-- ============================================================================================ -->
 	
+	<cityObjectMember>
+		<luse:LandUse>
+			<infra:administrativeDivision>
+				<infra:AdministrativeDivision>
+					<infra:state>existing</infra:state>
+					<infra:adID>
+						<infra:ID>
+							<infra:identifier>admin01</infra:identifier>
+						</infra:ID>
+					</infra:adID>
+					<infra:adType>Municipality</infra:adType>
+					<infra:shapeAndLocation>
+						<infra:SpatialUnit>
+							<infra:spatialUnitID>
+								<infra:ID>
+									<infra:identifier>Aalborg</infra:identifier>
+								</infra:ID>
+							</infra:spatialUnitID>
+							<infra:dimension>3D</infra:dimension>
+							<infra:boundingElement></infra:boundingElement>
+						</infra:SpatialUnit>
+					</infra:shapeAndLocation>
+				</infra:AdministrativeDivision>
+			</infra:administrativeDivision>
+		</luse:LandUse>
+	</cityObjectMember>
 	
 	<!-- ============================================================================================ -->
 	<!-- ===================== LandInfra CondominiumBuilding in the ADE coming soon  ================ -->
 	<!-- ============================================================================================ -->
 	
+	<cityObjectMember>
+		<infra:CondominiumBuilding>
+			<infra:state>existing</infra:state>
+			<infra:condominiumBuildingID>
+				<infra:ID>
+					<infra:identifier>CB01</infra:identifier>
+				</infra:ID>
+			</infra:condominiumBuildingID>
+			<infra:buildingNumber>HB122</infra:buildingNumber>
+			<infra:status>constructed</infra:status>
+			<infra:part xlink:href="#cbpart1"></infra:part>
+			<infra:part xlink:href="#cbpart2"></infra:part>
+			<infra:parcelLocation>
+				<infra:LandParcel>
+					<infra:state>existing</infra:state>
+					<infra:cadastralParcelId>
+						<infra:ID>
+							<infra:identifier>cp01</infra:identifier>
+						</infra:ID>
+					</infra:cadastralParcelId>
+					<infra:parcelArea uom="m2">100</infra:parcelArea>
+					<infra:shapeAndLocation>
+						<infra:SpatialUnit>
+							<infra:spatialUnitID>
+								<infra:ID>
+									<infra:identifier>su02</infra:identifier>
+								</infra:ID>
+							</infra:spatialUnitID>
+							<infra:dimension>3D</infra:dimension>
+							<infra:boundingElement></infra:boundingElement>
+						</infra:SpatialUnit>
+					</infra:shapeAndLocation>
+				</infra:LandParcel>
+			</infra:parcelLocation>
+		</infra:CondominiumBuilding>
+	</cityObjectMember>
 	
+	<cityObjectMember>
+		<infra:CondominiumBuildingPart>
+			<infra:state>existing</infra:state>
+			<infra:condominiumBuildingPartID>
+				<infra:ID>
+					<infra:identifier>cbpart1</infra:identifier>
+				</infra:ID>
+			</infra:condominiumBuildingPartID>
+			<infra:floorNumber>3</infra:floorNumber>
+			<infra:subsurfaceFloor>false</infra:subsurfaceFloor>
+			<infra:floorArea uom="m2">25</infra:floorArea>
+			<infra:buildingPartType>condominiumMainPart</infra:buildingPartType>
+			<infra:partOf xlink:href="#CB01"></infra:partOf>
+			<infra:shapeAndLocation></infra:shapeAndLocation>
+		</infra:CondominiumBuildingPart>
+	</cityObjectMember>
 	<!-- ============================================================================================ -->
 	<!-- =============================== Extended CityModel Attributes  ============================= -->
 	<!-- ============================================================================================ -->

@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:core="http://www.opengis.net/citygml/2.0" xmlns:dem="http://www.opengis.net/citygml/relief/2.0" xmlns:gml="http://www.opengis.net/gml" xmlns:gmllr="http://www.opengis.net/gml/3.3/lr" xmlns:infra="http://godzilla.bk.tudelft.nl/schemas/infraADE" xmlns:tran="http://www.opengis.net/citygml/transportation/2.0" xmlns:veg="http://www.opengis.net/citygml/vegetation/2.0" xmlns:wtr="http://www.opengis.net/citygml/waterbody/2.0" elementFormDefault="qualified" targetNamespace="http://godzilla.bk.tudelft.nl/schemas/infraADE" version="0.1">
+<?xml version="1.0" encoding="UTF-8"?><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:bldg="http://www.opengis.net/citygml/building/2.0" xmlns:core="http://www.opengis.net/citygml/2.0" xmlns:dem="http://www.opengis.net/citygml/relief/2.0" xmlns:gml="http://www.opengis.net/gml" xmlns:gmllr="http://www.opengis.net/gml/3.3/lr" xmlns:infra="http://godzilla.bk.tudelft.nl/schemas/infraADE" xmlns:luse="http://www.opengis.net/citygml/landuse/2.0" xmlns:tran="http://www.opengis.net/citygml/transportation/2.0" xmlns:veg="http://www.opengis.net/citygml/vegetation/2.0" xmlns:wtr="http://www.opengis.net/citygml/waterbody/2.0" elementFormDefault="qualified" targetNamespace="http://godzilla.bk.tudelft.nl/schemas/infraADE" version="0.1">
   <import namespace="http://www.opengis.net/citygml/2.0" schemaLocation="http://schemas.opengis.net/citygml/2.0/cityGMLBase.xsd"/>
+  <import namespace="http://www.opengis.net/citygml/building/2.0" schemaLocation="http://schemas.opengis.net/citygml/building/2.0/building.xsd"/>
+  <import namespace="http://www.opengis.net/citygml/landuse/2.0" schemaLocation="http://schemas.opengis.net/citygml/landuse/2.0/landUse.xsd"/>
   <import namespace="http://www.opengis.net/citygml/relief/2.0" schemaLocation="http://schemas.opengis.net/citygml/relief/2.0/relief.xsd"/>
   <import namespace="http://www.opengis.net/citygml/transportation/2.0" schemaLocation="http://schemas.opengis.net/citygml/transportation/2.0/transportation.xsd"/>
   <import namespace="http://www.opengis.net/citygml/vegetation/2.0" schemaLocation="http://schemas.opengis.net/citygml/vegetation/2.0/vegetation.xsd"/>
@@ -7,6 +9,261 @@
   <import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"/>
   <import namespace="http://www.opengis.net/gml/3.3/lr" schemaLocation="http://schemas.opengis.net/gml/3.3/linearRef.xsd"/>
   <!--XML Schema document created by ShapeChange - http://shapechange.net/-->
+  <element name="AdministrativeDivision" substitutionGroup="infra:LandInfraFeature" type="infra:AdministrativeDivisionType"/>
+  <complexType name="AdministrativeDivisionType">
+    <complexContent>
+      <extension base="infra:LandInfraFeatureType">
+        <sequence>
+          <element name="adID" type="infra:IDPropertyType"/>
+          <element name="adType" type="string"/>
+          <element minOccurs="0" name="isoCode" type="string"/>
+          <element minOccurs="0" name="referencePoint" type="gml:PointType"/>
+          <element maxOccurs="unbounded" name="shapeAndLocation" type="infra:SpatialUnitPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="AdministrativeDivisionPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:AdministrativeDivision"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="Alignment" substitutionGroup="infra:PositioningElement" type="infra:AlignmentType"/>
+  <complexType name="AlignmentType">
+    <complexContent>
+      <extension base="infra:PositioningElementType">
+        <sequence>
+          <element name="alignmentID" type="infra:IDPropertyType"/>
+          <element minOccurs="0" name="purpose" type="string"/>
+          <element minOccurs="0" name="designAlternative" type="string"/>
+          <element minOccurs="0" name="linestring2DRepresentation" type="gml:LineStringType"/>
+          <element minOccurs="0" name="linestring3DRepresentation" type="gml:LineStringType"/>
+          <element minOccurs="0" name="lrm" type="gmllr:LinearReferencingMethodPropertyType"/>
+          <element minOccurs="0" name="horizontal" type="infra:Alignment2dHorizontalPropertyType"/>
+          <element minOccurs="0" name="vertical" type="infra:Alignment2dVerticalPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="AlignmentPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:Alignment"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="Alignment2dHorizontal" substitutionGroup="gml:_GML" type="infra:Alignment2dHorizontalType"/>
+  <complexType name="Alignment2dHorizontalType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element name="location" type="string"/>
+          <element name="state" type="gml:CodeType"/>
+          <element minOccurs="0" name="linestring2dRepresentation" type="gml:LineStringType"/>
+          <element minOccurs="0" name="startDistanceAlong" type="gml:LengthType"/>
+          <element minOccurs="0" name="crs" type="anyURI"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="segment" type="infra:HorizontalSegment2dPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="Alignment2dHorizontalPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:Alignment2dHorizontal"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="Alignment2dVertical" substitutionGroup="gml:_GML" type="infra:Alignment2dVerticalType"/>
+  <complexType name="Alignment2dVerticalType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element name="location" type="string"/>
+          <element name="state" type="gml:CodeType"/>
+          <element minOccurs="0" name="alignmentOffset" type="gml:LengthType"/>
+          <element name="measuredAlong" type="infra:Alignment2dHorizontalPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="segment" type="infra:VerticalSegment2dPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="Alignment2dVerticalPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:Alignment2dVertical"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="AlignmentSet" substitutionGroup="gml:_GML" type="infra:AlignmentSetType"/>
+  <complexType name="AlignmentSetType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element name="alignmentSetID" type="infra:IDPropertyType"/>
+          <element maxOccurs="unbounded" name="alignment" type="infra:AlignmentPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="AlignmentSetPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:AlignmentSet"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="BEExplicitFace" substitutionGroup="infra:BEFace" type="infra:BEExplicitFaceType"/>
+  <complexType name="BEExplicitFaceType">
+    <complexContent>
+      <extension base="infra:BEFaceType">
+        <sequence>
+          <element name="geometry" type="gml:SurfacePropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="BEExplicitFacePropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:BEExplicitFace"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="BEExtrudedFace" substitutionGroup="infra:BEFace" type="infra:BEExtrudedFaceType"/>
+  <complexType name="BEExtrudedFaceType">
+    <complexContent>
+      <extension base="infra:BEFaceType">
+        <sequence>
+          <element name="geometry" type="gml:GeometryPropertyType"/>
+          <element name="lowerLimit" type="infra:ExtrusionLimitPropertyType"/>
+          <element name="upperLimit" type="infra:ExtrusionLimitPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="BEExtrudedFacePropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:BEExtrudedFace"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element abstract="true" name="BEFace" substitutionGroup="infra:BoundingElement" type="infra:BEFaceType"/>
+  <complexType abstract="true" name="BEFaceType">
+    <complexContent>
+      <extension base="infra:BoundingElementType">
+        <sequence/>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="BEFacePropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:BEFace"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="BEImplicitFace" substitutionGroup="infra:BEFace" type="infra:BEImplicitFaceType"/>
+  <complexType name="BEImplicitFaceType">
+    <complexContent>
+      <extension base="infra:BEFaceType">
+        <sequence>
+          <element name="geometry" type="gml:CodeType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="BEImplicitFacePropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:BEImplicitFace"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="BEPoint" substitutionGroup="infra:BoundingElement" type="infra:BEPointType"/>
+  <complexType name="BEPointType">
+    <complexContent>
+      <extension base="infra:BoundingElementType">
+        <sequence>
+          <element name="geometry" type="gml:PointType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="BEPointPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:BEPoint"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="BESolid" substitutionGroup="infra:BoundingElement" type="infra:BESolidType"/>
+  <complexType name="BESolidType">
+    <complexContent>
+      <extension base="infra:BoundingElementType">
+        <sequence>
+          <element name="geometry" type="gml:SolidPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="BESolidPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:BESolid"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="BEString" substitutionGroup="infra:BoundingElement" type="infra:BEStringType"/>
+  <complexType name="BEStringType">
+    <complexContent>
+      <extension base="infra:BoundingElementType">
+        <sequence>
+          <element name="geometry" type="gml:GeometryPropertyType"/>
+          <element name="stringType" type="gml:CodeType"/>
+          <element minOccurs="0" name="direction" type="infra:StringDirectionTypeType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="BEStringPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:BEString"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="BEText" substitutionGroup="infra:BoundingElement" type="infra:BETextType"/>
+  <complexType name="BETextType">
+    <complexContent>
+      <extension base="infra:BoundingElementType">
+        <sequence>
+          <element name="geometry" type="string"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="BETextPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:BEText"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="BoundingElement" substitutionGroup="gml:_GML" type="infra:BoundingElementType"/>
+  <complexType name="BoundingElementType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element name="boundingElementID" type="infra:IDPropertyType"/>
+          <element name="isComplete" type="boolean"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="BoundingElementPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:BoundingElement"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="buildingID" substitutionGroup="bldg:_GenericApplicationPropertyOfBuilding" type="infra:IDPropertyType"/>
+  <element name="buildingStatus" substitutionGroup="bldg:_GenericApplicationPropertyOfBuilding" type="gml:CodeType"/>
+  <element name="buildingState" substitutionGroup="bldg:_GenericApplicationPropertyOfBuilding" type="gml:CodeType"/>
+  <element name="buildingPartID" substitutionGroup="bldg:_GenericApplicationPropertyOfBuildingPart" type="infra:IDPropertyType"/>
+  <element name="buildingPartStatus" substitutionGroup="bldg:_GenericApplicationPropertyOfBuildingPart" type="gml:CodeType"/>
+  <element name="buildingPartState" substitutionGroup="bldg:_GenericApplicationPropertyOfBuildingPart" type="gml:CodeType"/>
+  <element name="buildingPartFootprint" substitutionGroup="bldg:_GenericApplicationPropertyOfBuildingPart" type="gml:GeometryPropertyType"/>
   <element name="CantEvent" substitutionGroup="gml:_GML" type="infra:CantEventType"/>
   <complexType name="CantEventType">
     <complexContent>
@@ -32,6 +289,7 @@
         <sequence>
           <element name="gauge" type="string"/>
           <element maxOccurs="unbounded" minOccurs="2" name="cantEvent" type="infra:CantEventPropertyType"/>
+          <element name="locatedAlong" type="gmllr:LinearElementPropertyType"/>
         </sequence>
       </extension>
     </complexContent>
@@ -41,6 +299,19 @@
       <element ref="infra:CantSpecification"/>
     </sequence>
     <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="CircularArcSegmentType" substitutionGroup="gml:_Object" type="infra:CircularArcSegmentTypeType"/>
+  <complexType name="CircularArcSegmentTypeType">
+    <choice>
+      <element name="circularArc" type="gml:ArcType"/>
+      <element name="circularArcByBulge" type="gml:ArcByBulgeType"/>
+      <element name="circularArcByCenterPoint" type="gml:ArcByCenterPointType"/>
+    </choice>
+  </complexType>
+  <complexType name="CircularArcSegmentTypePropertyType">
+    <sequence>
+      <element ref="infra:CircularArcSegmentType"/>
+    </sequence>
   </complexType>
   <element name="dateTime" substitutionGroup="core:_GenericApplicationPropertyOfCityModel" type="date"/>
   <element name="datasetVersion" substitutionGroup="core:_GenericApplicationPropertyOfCityModel" type="string"/>
@@ -61,6 +332,196 @@
   </element>
   <element name="name" substitutionGroup="core:_GenericApplicationPropertyOfCityModel" type="string"/>
   <element name="description" substitutionGroup="core:_GenericApplicationPropertyOfCityModel" type="string"/>
+  <element name="CondominiumBuilding" substitutionGroup="infra:LandInfraFeature" type="infra:CondominiumBuildingType"/>
+  <complexType name="CondominiumBuildingType">
+    <complexContent>
+      <extension base="infra:LandInfraFeatureType">
+        <sequence>
+          <element name="condominiumBuildingID" type="infra:IDPropertyType"/>
+          <element name="buildingNumber" type="string"/>
+          <element name="status" type="gml:CodeType"/>
+          <element minOccurs="0" name="footprint" type="gml:GeometryPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="2" name="part" type="infra:CondominiumBuildingPartPropertyType"/>
+          <element maxOccurs="unbounded" name="parcelLocation" type="infra:LandParcelPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="scheme" type="infra:CondominiumSchemePropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="CondominiumBuildingPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:CondominiumBuilding"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="CondominiumBuildingPart" substitutionGroup="infra:LandInfraFeature" type="infra:CondominiumBuildingPartType"/>
+  <complexType name="CondominiumBuildingPartType">
+    <complexContent>
+      <extension base="infra:LandInfraFeatureType">
+        <sequence>
+          <element name="condominiumBuildingPartID" type="infra:IDPropertyType"/>
+          <element maxOccurs="unbounded" name="floorNumber" type="string"/>
+          <element name="subsurfaceFloor" type="boolean"/>
+          <element minOccurs="0" name="floorArea" type="gml:AreaType"/>
+          <element name="buildingPartType" type="gml:CodeType"/>
+          <element name="partOf" type="infra:CondominiumBuildingPropertyType"/>
+          <element name="shapeAndLocation" type="infra:SpatialUnitPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="CondominiumBuildingPartPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:CondominiumBuildingPart"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="CondominiumScheme" substitutionGroup="infra:Statement" type="infra:CondominiumSchemeType"/>
+  <complexType name="CondominiumSchemeType">
+    <complexContent>
+      <extension base="infra:StatementType">
+        <sequence>
+          <element name="buildingDescription" type="string"/>
+          <element maxOccurs="unbounded" name="building" type="infra:CondominiumBuildingPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="2" name="unit" type="infra:CondominiumUnitPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="CondominiumSchemePropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:CondominiumScheme"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="CondominiumUnit" substitutionGroup="infra:PropertyUnit" type="infra:CondominiumUnitType"/>
+  <complexType name="CondominiumUnitType">
+    <complexContent>
+      <extension base="infra:PropertyUnitType">
+        <sequence>
+          <element name="shareInJointFacilities" type="string"/>
+          <element minOccurs="0" name="condominiumUseType" type="gml:CodeType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="designUnitID" type="string"/>
+          <element name="mainPart" type="infra:CondominiumBuildingPartPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="accessoryPart" type="infra:CondominiumBuildingPartPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="CondominiumUnitPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:CondominiumUnit"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="CrossSection" substitutionGroup="gml:_GML" type="infra:CrossSectionType"/>
+  <complexType name="CrossSectionType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element name="crossSectionID" type="infra:IDPropertyType"/>
+          <element name="distanceAlong" type="gmllr:DistanceExpressionPropertyType"/>
+          <element name="horizontalDisplacement" type="gml:LengthType"/>
+          <element name="verticalDisplacement" type="gml:LengthType"/>
+          <element minOccurs="0" name="locatedAlong" type="gmllr:LinearElementPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="component" type="infra:CrossSectionComponentPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="area" type="infra:CrossSectionAreaPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="CrossSectionPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:CrossSection"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="CrossSectionArea" substitutionGroup="gml:_GML" type="infra:CrossSectionAreaType"/>
+  <complexType name="CrossSectionAreaType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element minOccurs="0" name="material" type="string"/>
+          <element name="area" type="gml:AreaType"/>
+          <element maxOccurs="unbounded" minOccurs="3" name="point" type="infra:CrossSectionPointPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="CrossSectionAreaPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:CrossSectionArea"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="CrossSectionComponent" substitutionGroup="gml:_GML" type="infra:CrossSectionComponentType"/>
+  <complexType name="CrossSectionComponentType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element minOccurs="0" name="material" type="string"/>
+          <element name="isClosed" type="boolean"/>
+          <element maxOccurs="unbounded" minOccurs="2" name="point" type="infra:CrossSectionPointPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="CrossSectionComponentPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:CrossSectionComponent"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="CrossSectionPoint" substitutionGroup="gml:_GML" type="infra:CrossSectionPointType"/>
+  <complexType name="CrossSectionPointType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element name="name" type="string"/>
+          <element minOccurs="0" name="description" type="string"/>
+          <element name="horizontalOffset" type="gml:LengthType"/>
+          <element name="verticalOffset" type="gml:LengthType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="CrossSectionPointPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:CrossSectionPoint"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="CrossSectionSet" substitutionGroup="gml:_GML" type="infra:CrossSectionSetType"/>
+  <complexType name="CrossSectionSetType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element name="crossSectionID" type="infra:IDPropertyType"/>
+          <element maxOccurs="unbounded" name="crossSection" type="infra:CrossSectionPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="CrossSectionSetPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:CrossSectionSet"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="CurveHorizontalSegment2d" substitutionGroup="gml:_Object" type="infra:CurveHorizontalSegment2dType"/>
+  <complexType name="CurveHorizontalSegment2dType">
+    <choice>
+      <element name="lineSegment" type="gml:LineStringType"/>
+      <element name="circularArcSegment" type="infra:CircularArcSegmentTypePropertyType"/>
+      <element name="clothoidArcSegment" type="gml:ClothoidType"/>
+      <element name="transitionSegment" type="infra:TransitionCurvePropertyType"/>
+    </choice>
+  </complexType>
+  <complexType name="CurveHorizontalSegment2dPropertyType">
+    <sequence>
+      <element ref="infra:CurveHorizontalSegment2d"/>
+    </sequence>
+  </complexType>
   <element name="Document" substitutionGroup="infra:LandInfraFeature" type="infra:DocumentType"/>
   <complexType name="DocumentType">
     <complexContent>
@@ -78,6 +539,41 @@
       <element ref="infra:Document"/>
     </sequence>
     <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="Easement" substitutionGroup="infra:LandInfraFeature" type="infra:EasementType"/>
+  <complexType name="EasementType">
+    <complexContent>
+      <extension base="infra:LandInfraFeatureType">
+        <sequence>
+          <element name="easementID" type="infra:IDPropertyType"/>
+          <element name="type" type="string"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="beneficiaryParty" type="string"/>
+          <element name="permittedUse" type="string"/>
+          <element maxOccurs="unbounded" name="documentation" type="infra:StatementPropertyType"/>
+          <element maxOccurs="unbounded" name="shapeAndLocation" type="infra:SpatialUnitPropertyType"/>
+          <element maxOccurs="unbounded" name="across" type="infra:LandParcelPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="EasementPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:Easement"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="ExtrusionLimit" substitutionGroup="gml:_Object" type="infra:ExtrusionLimitType"/>
+  <complexType name="ExtrusionLimitType">
+    <choice>
+      <element name="distance" type="double"/>
+      <element name="elevation" type="double"/>
+      <element name="text" type="string"/>
+    </choice>
+  </complexType>
+  <complexType name="ExtrusionLimitPropertyType">
+    <sequence>
+      <element ref="infra:ExtrusionLimit"/>
+    </sequence>
   </complexType>
   <element name="Facility" substitutionGroup="infra:LandInfraFeature" type="infra:FacilityType"/>
   <complexType name="FacilityType">
@@ -157,6 +653,23 @@
     </sequence>
     <attributeGroup ref="gml:AssociationAttributeGroup"/>
   </complexType>
+  <element name="HorizontalSegment2d" substitutionGroup="gml:_GML" type="infra:HorizontalSegment2dType"/>
+  <complexType name="HorizontalSegment2dType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element name="tangentialContinuity" type="boolean"/>
+          <element minOccurs="0" name="geometry" type="infra:CurveHorizontalSegment2dPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="HorizontalSegment2dPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:HorizontalSegment2d"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
   <element name="ID" substitutionGroup="gml:_GML" type="infra:IDType"/>
   <complexType name="IDType">
     <complexContent>
@@ -233,6 +746,46 @@
     </sequence>
     <attributeGroup ref="gml:AssociationAttributeGroup"/>
   </complexType>
+  <element name="LandParcel" substitutionGroup="infra:LandInfraFeature" type="infra:LandParcelType"/>
+  <complexType name="LandParcelType">
+    <complexContent>
+      <extension base="infra:LandInfraFeatureType">
+        <sequence>
+          <element name="cadastralParcelId" type="infra:IDPropertyType"/>
+          <element minOccurs="0" name="landRecordingDocumentId" type="infra:IDPropertyType"/>
+          <element name="parcelArea" type="gml:AreaType"/>
+          <element minOccurs="0" name="currentLandUse" type="string"/>
+          <element minOccurs="0" name="plannedLandUse" type="string"/>
+          <element minOccurs="0" name="parcelState" type="gml:CodeType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="within" type="infra:AdministrativeDivisionPropertyType"/>
+          <element name="shapeAndLocation" type="infra:SpatialUnitPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="LandParcelPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:LandParcel"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="LandPropertyUnit" substitutionGroup="infra:PropertyUnit" type="infra:LandPropertyUnitType"/>
+  <complexType name="LandPropertyUnitType">
+    <complexContent>
+      <extension base="infra:PropertyUnitType">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="encumbrance" type="infra:SuperficieObjectPropertyType"/>
+          <element maxOccurs="unbounded" name="landParcel" type="infra:LandParcelPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="LandPropertyUnitPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:LandPropertyUnit"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
   <element name="LandSurfaceProperties" substitutionGroup="gml:_GML" type="infra:LandSurfacePropertiesType"/>
   <complexType name="LandSurfacePropertiesType">
     <complexContent>
@@ -254,6 +807,9 @@
     </sequence>
     <attributeGroup ref="gml:AssociationAttributeGroup"/>
   </complexType>
+  <element name="administrativeDivision" substitutionGroup="luse:_GenericApplicationPropertyOfLandUse" type="infra:AdministrativeDivisionPropertyType"/>
+  <element name="propertyUnit" substitutionGroup="luse:_GenericApplicationPropertyOfLandUse" type="infra:PropertyUnitPropertyType"/>
+  <element name="easment" substitutionGroup="luse:_GenericApplicationPropertyOfLandUse" type="infra:EasementPropertyType"/>
   <element name="LinearAtLocation" substitutionGroup="infra:LinearlyReferencedLocation" type="infra:LinearAtLocationType"/>
   <complexType name="LinearAtLocationType">
     <complexContent>
@@ -287,6 +843,24 @@
     </sequence>
     <attributeGroup ref="gml:AssociationAttributeGroup"/>
   </complexType>
+  <element name="LinearLayer" substitutionGroup="infra:_LandLayer" type="infra:LinearLayerType"/>
+  <complexType name="LinearLayerType">
+    <complexContent>
+      <extension base="infra:_LandLayerType">
+        <sequence>
+          <element name="linearLayerID" type="infra:IDPropertyType"/>
+          <element name="locatedAlong" type="gmllr:LinearElementPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="2" name="landCrossSection" type="infra:CrossSectionPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="LinearLayerPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:LinearLayer"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
   <element abstract="true" name="LinearlyReferencedLocation" substitutionGroup="gml:_GML" type="infra:LinearlyReferencedLocationType"/>
   <complexType abstract="true" name="LinearlyReferencedLocationType">
     <complexContent>
@@ -301,6 +875,23 @@
   <complexType name="LinearlyReferencedLocationPropertyType">
     <sequence minOccurs="0">
       <element ref="infra:LinearlyReferencedLocation"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="Ownership" substitutionGroup="gml:_GML" type="infra:OwnershipType"/>
+  <complexType name="OwnershipType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element minOccurs="0" name="relativeShare" type="double"/>
+          <element minOccurs="0" name="ownerAddress" type="string"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OwnershipPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:Ownership"/>
     </sequence>
     <attributeGroup ref="gml:AssociationAttributeGroup"/>
   </complexType>
@@ -427,6 +1018,25 @@
     </sequence>
     <attributeGroup ref="gml:AssociationAttributeGroup"/>
   </complexType>
+  <element name="PropertyUnit" substitutionGroup="infra:LandInfraFeature" type="infra:PropertyUnitType"/>
+  <complexType name="PropertyUnitType">
+    <complexContent>
+      <extension base="infra:LandInfraFeatureType">
+        <sequence>
+          <element name="propertyUnitID" type="infra:IDPropertyType"/>
+          <element maxOccurs="unbounded" name="ownership" type="infra:OwnershipPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="postAddress" type="string"/>
+          <element maxOccurs="unbounded" name="documentation" type="infra:StatementPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="PropertyUnitPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:PropertyUnit"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
   <element name="railwayID" substitutionGroup="tran:_GenericApplicationPropertyOfRailway" type="infra:IDPropertyType"/>
   <element name="state" substitutionGroup="tran:_GenericApplicationPropertyOfRailway" type="gml:CodeType"/>
   <element name="status" substitutionGroup="tran:_GenericApplicationPropertyOfRailway" type="gml:CodeType"/>
@@ -434,6 +1044,7 @@
   <element name="railwayElementSet" substitutionGroup="tran:_GenericApplicationPropertyOfRailway" type="infra:RailwayElementSetPropertyType"/>
   <element name="railwayElement" substitutionGroup="tran:_GenericApplicationPropertyOfRailway" type="infra:RailwayElementPropertyType"/>
   <element name="cantSpecification" substitutionGroup="tran:_GenericApplicationPropertyOfRailway" type="infra:CantSpecificationPropertyType"/>
+  <element name="railwayAlignment" substitutionGroup="tran:_GenericApplicationPropertyOfRailway" type="infra:AlignmentPropertyType"/>
   <element name="RailwayElement" substitutionGroup="infra:PhysicalElement" type="infra:RailwayElementType"/>
   <complexType name="RailwayElementType">
     <complexContent>
@@ -478,6 +1089,10 @@
   <element name="surfaceSet" substitutionGroup="tran:_GenericApplicationPropertyOfRoad" type="infra:SurfaceSetPropertyType"/>
   <element name="stringLine" substitutionGroup="tran:_GenericApplicationPropertyOfRoad" type="infra:StringLinePropertyType"/>
   <element name="surface" substitutionGroup="tran:_GenericApplicationPropertyOfRoad" type="infra:SurfacePropertyType"/>
+  <element name="roadAlignmentSet" substitutionGroup="tran:_GenericApplicationPropertyOfRoad" type="infra:AlignmentSetPropertyType"/>
+  <element name="roadAlignment" substitutionGroup="tran:_GenericApplicationPropertyOfRoad" type="infra:AlignmentPropertyType"/>
+  <element name="roadCrossSectionSet" substitutionGroup="tran:_GenericApplicationPropertyOfRoad" type="infra:CrossSectionSetPropertyType"/>
+  <element name="roadCrossSection" substitutionGroup="tran:_GenericApplicationPropertyOfRoad" type="infra:CrossSectionPropertyType"/>
   <element name="RoadElement" substitutionGroup="infra:PhysicalElement" type="infra:RoadElementType"/>
   <complexType name="RoadElementType">
     <complexContent>
@@ -538,6 +1153,24 @@
       <enumeration value="both"/>
     </restriction>
   </simpleType>
+  <element name="Signatory" substitutionGroup="gml:_GML" type="infra:SignatoryType"/>
+  <complexType name="SignatoryType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element name="signingParty" type="string"/>
+          <element minOccurs="0" name="role" type="gml:CodeType"/>
+          <element name="signingDate" type="date"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="SignatoryPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:Signatory"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
   <element name="SimpleIndexedPolygon" substitutionGroup="gml:_Surface" type="infra:SimpleIndexedPolygonType"/>
   <complexType name="SimpleIndexedPolygonType">
     <complexContent>
@@ -554,6 +1187,64 @@
     </sequence>
     <attributeGroup ref="gml:AssociationAttributeGroup"/>
   </complexType>
+  <element name="SolidLayer" substitutionGroup="infra:_LandLayer" type="infra:SolidLayerType"/>
+  <complexType name="SolidLayerType">
+    <complexContent>
+      <extension base="infra:_LandLayerType">
+        <sequence>
+          <element name="solidLayerID" type="infra:IDPropertyType"/>
+          <element minOccurs="0" name="material" type="string"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="SolidLayerPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:SolidLayer"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="SpatialUnit" substitutionGroup="gml:_GML" type="infra:SpatialUnitType"/>
+  <complexType name="SpatialUnitType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element name="spatialUnitID" type="infra:IDPropertyType"/>
+          <element name="dimension" type="gml:CodeType"/>
+          <element minOccurs="0" name="area" type="gml:AreaType"/>
+          <element minOccurs="0" name="volume" type="gml:VolumeType"/>
+          <element minOccurs="0" name="height" type="gml:LengthType"/>
+          <element maxOccurs="unbounded" name="boundingElement" type="infra:BoundingElementPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="SpatialUnitPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:SpatialUnit"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="Statement" substitutionGroup="infra:Document" type="infra:StatementType"/>
+  <complexType name="StatementType">
+    <complexContent>
+      <extension base="infra:DocumentType">
+        <sequence>
+          <element name="type" type="gml:CodeType"/>
+          <element name="draftsman" type="gml:CodeType"/>
+          <element name="caseID" type="infra:IDPropertyType"/>
+          <element minOccurs="0" name="landRecordingDocumentID" type="infra:IDPropertyType"/>
+          <element maxOccurs="unbounded" name="signatory" type="infra:SignatoryPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="StatementPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:Statement"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
   <simpleType name="StringDirectionTypeType">
     <restriction base="string">
       <enumeration value="forward"/>
@@ -566,14 +1257,7 @@
       <extension base="gml:AbstractGMLType">
         <sequence>
           <element name="stringLineID" type="infra:IDPropertyType"/>
-          <element name="geometry">
-            <complexType>
-              <sequence minOccurs="0">
-                <element ref="gml:LineStringSegment"/>
-              </sequence>
-              <attributeGroup ref="gml:AssociationAttributeGroup"/>
-            </complexType>
-          </element>
+          <element name="geometry" type="gml:LineStringType"/>
         </sequence>
       </extension>
     </complexContent>
@@ -598,6 +1282,22 @@
   <complexType name="StringLineSetPropertyType">
     <sequence minOccurs="0">
       <element ref="infra:StringLineSet"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="SuperficieObject" substitutionGroup="infra:LandInfraFeature" type="infra:SuperficieObjectType"/>
+  <complexType name="SuperficieObjectType">
+    <complexContent>
+      <extension base="infra:LandInfraFeatureType">
+        <sequence>
+          <element name="encumbranceScheme" type="infra:StatementPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="SuperficieObjectPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:SuperficieObject"/>
     </sequence>
     <attributeGroup ref="gml:AssociationAttributeGroup"/>
   </complexType>
@@ -642,6 +1342,47 @@
     </sequence>
     <attributeGroup ref="gml:AssociationAttributeGroup"/>
   </complexType>
+  <element name="SurfacesLayer" substitutionGroup="infra:_LandLayer" type="infra:SurfacesLayerType"/>
+  <complexType name="SurfacesLayerType">
+    <complexContent>
+      <extension base="infra:_LandLayerType">
+        <sequence>
+          <element name="surfacesLayerID" type="infra:IDPropertyType"/>
+          <element name="topSurface">
+            <complexType>
+              <sequence minOccurs="0">
+                <element ref="gml:Tin"/>
+              </sequence>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+            </complexType>
+          </element>
+          <element name="bottomSurface">
+            <complexType>
+              <sequence minOccurs="0">
+                <element ref="gml:Tin"/>
+              </sequence>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+            </complexType>
+          </element>
+          <element name="extent">
+            <complexType>
+              <sequence minOccurs="0">
+                <element ref="gml:PolygonPatch"/>
+              </sequence>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+            </complexType>
+          </element>
+          <element minOccurs="0" name="material" type="string"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="SurfacesLayerPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:SurfacesLayer"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
   <element name="Survey" substitutionGroup="gml:_GML" type="infra:SurveyType"/>
   <complexType name="SurveyType">
     <complexContent>
@@ -673,7 +1414,67 @@
     </sequence>
     <attributeGroup ref="gml:AssociationAttributeGroup"/>
   </complexType>
+  <element name="SurveyMonument" substitutionGroup="infra:SurveyMark" type="infra:SurveyMonumentType"/>
+  <complexType name="SurveyMonumentType">
+    <complexContent>
+      <extension base="infra:SurveyMarkType">
+        <sequence>
+          <element name="type" type="gml:CodeType"/>
+          <element name="documentation" type="infra:StatementPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="SurveyMonumentPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:SurveyMonument"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
   <element name="lsProperties" substitutionGroup="dem:_GenericApplicationPropertyOfTinRelief" type="infra:LandSurfacePropertiesPropertyType"/>
+  <element name="TransitionCurve" substitutionGroup="gml:_GML" type="infra:TransitionCurveType"/>
+  <complexType name="TransitionCurveType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element name="referenceLocation" type="gml:AffinePlacementType"/>
+          <element name="length" type="gml:LengthType"/>
+          <element name="startCurvature" type="double"/>
+          <element name="endCurvature" type="double"/>
+          <element name="transitionType" type="string"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="TransitionCurvePropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:TransitionCurve"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="VerticalSegment2d" substitutionGroup="gml:_GML" type="infra:VerticalSegment2dType"/>
+  <complexType name="VerticalSegment2dType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element name="tangentialContinuity" type="boolean"/>
+          <element name="startDistAlong" type="gmllr:DistanceExpressionPropertyType"/>
+          <element name="startHeight" type="gml:LengthType"/>
+          <element name="startGradient" type="double"/>
+          <element name="horizontalLength" type="gml:LengthType"/>
+          <element minOccurs="0" name="isConvex" type="boolean"/>
+          <element name="radius" type="gml:LengthType"/>
+          <element name="constant" type="double"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="VerticalSegment2dPropertyType">
+    <sequence minOccurs="0">
+      <element ref="infra:VerticalSegment2d"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
   <element name="leWaterProperties" substitutionGroup="wtr:_GenericApplicationPropertyOfWaterBody" type="infra:LandElementPropertiesPropertyType"/>
   <element abstract="true" name="_Element" substitutionGroup="infra:LandInfraFeature" type="infra:_ElementType"/>
   <complexType abstract="true" name="_ElementType">
