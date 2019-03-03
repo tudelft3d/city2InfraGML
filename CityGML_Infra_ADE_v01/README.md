@@ -1,7 +1,7 @@
 
 # CityGML Infra ADE
 
-Extension for modelling LandInfra features in CityGML. 
+CityGML extension for modelling LandInfra features in CityGML. 
 
 
 # Resources
@@ -26,7 +26,7 @@ The **XML Schema file and codelists** of the Infraa ADE were derived automatical
 [InfraGML]( https://www.khronos.org/gltf/) is the GML based implementation of the LandInfra conceptual model. LandInfra covers land and civil engineering infrastructure facilities, such as roads, buildings, railways, projects, alignment, survey, land features and land division. InfraGML is published as an 8 part standard and each part has a separate schema (XSD ﬁle): Core, Features, Projects, Alignments, Roads, Railways, Survey and LandDivision.
 
 ### Coming soon
-LandInfra Survey, and LandDivision in the Infra ADE.
+LandInfra Survey in the Infra ADE.
 
 Conditions for use
 ---------------------
