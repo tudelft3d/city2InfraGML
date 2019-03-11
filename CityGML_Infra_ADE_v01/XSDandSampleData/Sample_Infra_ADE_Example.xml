@@ -15,6 +15,7 @@
 	xmlns:grp="http://www.opengis.net/citygml/cityobjectgroup/2.0"
 	xmlns:veg="http://www.opengis.net/citygml/vegetation/2.0"
 	xmlns:gmllr="http://www.opengis.net/gml/3.3/gmllr"
+	xmlns:tun="http://www.opengis.net/citygml/tunnel/2.0"
 	xsi:schemaLocation="http://www.opengis.net/citygml/2.0 http://schemas.opengis.net/citygml/2.0/cityGMLBase.xsd         
 	http://www.opengis.net/citygml/building/2.0 http://schemas.opengis.net/citygml/building/2.0/building.xsd         
 	http://www.opengis.net/citygml/appearance/2.0 http://schemas.opengis.net/citygml/appearance/2.0/appearance.xsd         
@@ -30,6 +31,7 @@
 	http://www.opengis.net/citygml/generics/2.0 http://schemas.opengis.net/citygml/generics/2.0/generics.xsd         
 	http://www.opengis.net/citygml/cityobjectgroup/2.0 http://schemas.opengis.net/citygml/cityobjectgroup/2.0/cityObjectGroup.xsd
 	http://www.opengis.net/gml/3.3/gmll http://schemas.opengis.net/gml/3.3/linearRef.xsd
+	http://www.opengis.net/citygml/tunnel/2.0 http://schemas.opengis.net/citygml/tunnel/2.0/tunnel.xsd
 	http://godzilla.bk.tudelft.nl/schemas/3DMD_ADE CityGML_Infra_ADE.xsd">
 	
 	<!-- ===================== Note: These are just sample values!! ===================== -->
@@ -27280,8 +27282,8 @@
 					<infra:identifier>railway01</infra:identifier>
 				</infra:ID>
 			</infra:railwayID>
-			<infra:status>constructed</infra:status>
-			<infra:state>existing</infra:state>
+			<infra:railwayState>existing</infra:railwayState>
+			<infra:railwayStatus>constructed</infra:railwayStatus>
 			<infra:railwayElement xlink:href="#raile1"></infra:railwayElement>
 		</tran:Railway>
 	</cityObjectMember>
@@ -27351,23 +27353,23 @@
 					<infra:location>road centerline</infra:location>
 					<infra:state>existing</infra:state>
 					<infra:segment>
-						<infra:HorizontalSegment2d>
+						<infra:Alignment2dHorSegment>
 							<infra:tangentialContinuity>true</infra:tangentialContinuity>
 							<infra:geometry>
-								<infra:CurveHorizontalSegment2d>
+								<infra:CurveSegment2dHorizontal>								
 									<infra:lineSegment>
 										<gml:pos>0 1000</gml:pos>
 										<gml:pos>0 1100</gml:pos>
 									</infra:lineSegment>
-								</infra:CurveHorizontalSegment2d>
+								</infra:CurveSegment2dHorizontal>
 							</infra:geometry>
-						</infra:HorizontalSegment2d>
+						</infra:Alignment2dHorSegment>
 					</infra:segment>
 					<infra:segment>
-						<infra:HorizontalSegment2d>
+						<infra:Alignment2dHorSegment>
 							<infra:tangentialContinuity>true</infra:tangentialContinuity>
 							<infra:geometry>
-								<infra:CurveHorizontalSegment2d>
+								<infra:CurveSegment2dHorizontal>
 									<infra:clothoidArcSegment>
 										<gml:refLocation>
 											<gml:AffinePlacement>
@@ -27381,15 +27383,15 @@
 										<gml:startParameter>1</gml:startParameter>
 										<gml:endParameter>1</gml:endParameter>
 									</infra:clothoidArcSegment>
-								</infra:CurveHorizontalSegment2d>
+								</infra:CurveSegment2dHorizontal>
 							</infra:geometry>
-						</infra:HorizontalSegment2d>
+						</infra:Alignment2dHorSegment>
 					</infra:segment>
 					<infra:segment>
-						<infra:HorizontalSegment2d>
+						<infra:Alignment2dHorSegment>
 							<infra:tangentialContinuity>true</infra:tangentialContinuity>
 							<infra:geometry>
-								<infra:CurveHorizontalSegment2d>
+								<infra:CurveSegment2dHorizontal>
 									<infra:circularArcSegment>
 										<infra:CircularArcSegmentType>
 											<infra:circularArcByCenterPoint numArc="1">
@@ -27400,15 +27402,15 @@
 											</infra:circularArcByCenterPoint>
 										</infra:CircularArcSegmentType>
 									</infra:circularArcSegment>
-								</infra:CurveHorizontalSegment2d>
+								</infra:CurveSegment2dHorizontal>
 							</infra:geometry>
-						</infra:HorizontalSegment2d>
+						</infra:Alignment2dHorSegment>
 					</infra:segment>
 					<infra:segment>
-						<infra:HorizontalSegment2d>
+						<infra:Alignment2dHorSegment>
 							<infra:tangentialContinuity>true</infra:tangentialContinuity>
 							<infra:geometry>
-								<infra:CurveHorizontalSegment2d>
+								<infra:CurveSegment2dHorizontal>
 									<infra:transitionSegment>
 										<infra:TransitionCurve>
 											<infra:referenceLocation>
@@ -27423,9 +27425,9 @@
 											<infra:transitionType>Bloss</infra:transitionType>
 										</infra:TransitionCurve>
 									</infra:transitionSegment>
-								</infra:CurveHorizontalSegment2d>
+								</infra:CurveSegment2dHorizontal>
 							</infra:geometry>
-						</infra:HorizontalSegment2d>
+						</infra:Alignment2dHorSegment>
 					</infra:segment>
 				</infra:Alignment2dHorizontal>
 			</infra:horizontal>
@@ -27437,13 +27439,13 @@
 	<!-- ============================================================================================ -->
 	
 	<cityObjectMember>
-		<infra:SolidLayer>
+		<infra:SolidLayer gml:id="layer01">
 			<infra:state>existing</infra:state>
 			<infra:spatialRepresentation xlink:href="#pmesh1">
 			</infra:spatialRepresentation>
 			<infra:solidLayerID>
 				<infra:ID>
-					<infra:identifier>Sol1</infra:identifier>
+					<infra:identifier>layer01</infra:identifier>
 				</infra:ID>
 			</infra:solidLayerID>
 			<infra:material>topsoil</infra:material>
@@ -27451,7 +27453,7 @@
 	</cityObjectMember>
 	
 	<!-- ============================================================================================ -->
-	<!-- ======================== LandInfra LandUse in the ADE coming soon  ========================= -->
+	<!-- ============================== LandInfra LandUse in the ADE   ============================== -->
 	<!-- ============================================================================================ -->
 	
 	<cityObjectMember>
@@ -27481,8 +27483,20 @@
 		</luse:LandUse>
 	</cityObjectMember>
 	
+	
 	<!-- ============================================================================================ -->
-	<!-- ===================== LandInfra CondominiumBuilding in the ADE coming soon  ================ -->
+	<!-- ========================== 3D Cadastre for a tunnel in the ADE  ============================ -->
+	<!-- ============================================================================================ -->
+	
+	<cityObjectMember>
+		<tun:Tunnel gml:id="tunnel01"></tun:Tunnel>
+	</cityObjectMember>
+	
+	<cityObjectMember>
+
+	</cityObjectMember>
+	<!-- ============================================================================================ -->
+	<!-- ============================ LandInfra CondominiumBuilding in the ADE ====================== -->
 	<!-- ============================================================================================ -->
 	
 	<cityObjectMember>
@@ -27519,6 +27533,7 @@
 					</infra:shapeAndLocation>
 				</infra:LandParcel>
 			</infra:parcelLocation>
+			<infra:scheme></infra:scheme>
 		</infra:CondominiumBuilding>
 	</cityObjectMember>
 	
@@ -27552,7 +27567,7 @@
 	</infra:datasetID>
 	<infra:datasetVersion>0.1</infra:datasetVersion>
 	<infra:infraVersion>1.0</infra:infraVersion>
-	<infra:dateTime>2019-02-25</infra:dateTime>
+	<infra:dateTime>2019-04-12T23:20:20.52Z</infra:dateTime>
 	<infra:language>English</infra:language>
 	<infra:defaultCRS>urn:ogc:def:crs,crs:EPSG:6.12:31466,crs:EPSG:6.12:5783</infra:defaultCRS>
 	<infra:description>LandInfra dataset in CityGML Infra ADE</infra:description>
@@ -27569,7 +27584,30 @@
 	<!-- ========================== LandInfra Survey in the ADE coming soon ========================= -->
 	<!-- ============================================================================================ -->
 	
-	<infra:survey></infra:survey>
+	<infra:survey>
+		<infra:Survey>
+			<infra:surveyID>
+				<infra:ID>
+					<infra:identifier>Surv01</infra:identifier>
+				</infra:ID>
+			</infra:surveyID>
+			<infra:name>SurveyData</infra:name>
+			<infra:description>Dataset with Survey data</infra:description>
+			<infra:type>computed</infra:type>
+			<infra:fieldNote>
+				<infra:Document>
+					<infra:state>existing</infra:state>
+					<infra:documentID>
+						<infra:ID>
+							<infra:identifier>SurveyDoc01</infra:identifier>
+						</infra:ID>
+					</infra:documentID>
+					<infra:documentType>Open Data</infra:documentType>
+					<infra:documentContent>www.abc.com/abc.pdf</infra:documentContent>
+				</infra:Document>
+			</infra:fieldNote>
+		</infra:Survey>
+	</infra:survey>
 	
 	
 	
