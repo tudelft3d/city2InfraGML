@@ -697,9 +697,9 @@
     <complexContent>
       <extension base="gml:AbstractGMLType">
         <sequence>
-          <element name="fromFeature" type="core:AbstractCityObjectType"/>
+          <element name="fromFeature" type="gml:ReferenceType"/>
           <element name="fromRole" type="string"/>
-          <element name="toFeature" type="core:AbstractCityObjectType"/>
+        	<element name="toFeature" type="gml:ReferenceType"/>
           <element name="toRole" type="string"/>
         </sequence>
       </extension>
@@ -1346,7 +1346,7 @@
           <element name="superficieID" type="infra:IDPropertyType"/>
           <element minOccurs="0" name="type" type="string"/>
           <element maxOccurs="unbounded" name="ownership" type="infra:OwnershipPropertyType"/>
-          <element name="encumberingFeature" type="core:AbstractCityObjectType"/>
+        	<element minOccurs="0" name="encumberingFeature" type="gml:ReferenceType"/>
           <element name="encumbranceScheme" type="infra:StatementPropertyType"/>
         </sequence>
       </extension>

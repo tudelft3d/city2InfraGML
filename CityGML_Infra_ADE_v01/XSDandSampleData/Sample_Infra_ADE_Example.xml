@@ -27322,7 +27322,20 @@
 			</infra:projectID>
 			<infra:projectStatus>constructed</infra:projectStatus>
 			<infra:statusDate>2019-01-01</infra:statusDate>
-			<infra:projectPart xlink:href="#projectpart1"></infra:projectPart>
+			<infra:projectPart>
+				<infra:ProjectPart gml:id="ProjectPart1">
+					<infra:state>existing</infra:state>
+					<infra:projectPartID>
+						<infra:ID>
+							<infra:identifier>ProjectPart1</infra:identifier>
+						</infra:ID>
+					</infra:projectPartID>
+					<infra:status>constructed</infra:status>
+					<infra:statusDate>2019-01-01</infra:statusDate>
+					<infra:facilityPart xlink:href="Building01"></infra:facilityPart>
+				</infra:ProjectPart>
+			</infra:projectPart>
+			<infra:projectPart xlink:href="#ProjectPart2"/>
 		</infra:Project>
 	</cityObjectMember>
 	
@@ -27483,18 +27496,7 @@
 		</luse:LandUse>
 	</cityObjectMember>
 	
-	
-	<!-- ============================================================================================ -->
-	<!-- ========================== 3D Cadastre for a tunnel in the ADE  ============================ -->
-	<!-- ============================================================================================ -->
-	
-	<cityObjectMember>
-		<tun:Tunnel gml:id="tunnel01"></tun:Tunnel>
-	</cityObjectMember>
-	
-	<cityObjectMember>
 
-	</cityObjectMember>
 	<!-- ============================================================================================ -->
 	<!-- ============================ LandInfra CondominiumBuilding in the ADE ====================== -->
 	<!-- ============================================================================================ -->
