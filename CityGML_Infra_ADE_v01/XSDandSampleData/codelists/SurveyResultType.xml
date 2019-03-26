@@ -1,0 +1,38 @@
+<?xml-stylesheet type='text/xsl' href='./CodelistDictionary-v32.xsl'?><Dictionary xmlns="http://www.opengis.net/gml" xmlns:gml="http://www.opengis.net/gml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" gml:id="SurveyResultType" xsi:schemaLocation="http://www.opengis.net/gml null">
+  <identifier codeSpace="http://godzilla.bk.tudelft.nl/schemas/infraADE">SurveyResultType</identifier>
+  <dictionaryEntry>
+    <Definition gml:id="_9284_12352">
+      <identifier codeSpace="http://godzilla.bk.tudelft.nl/schemas/infraADE/SurveyResultType">targetPoint</identifier>
+    </Definition>
+  </dictionaryEntry>
+  <dictionaryEntry>
+    <Definition gml:id="_9284_12353">
+      <identifier codeSpace="http://godzilla.bk.tudelft.nl/schemas/infraADE/SurveyResultType">string</identifier>
+    </Definition>
+  </dictionaryEntry>
+  <dictionaryEntry>
+    <Definition gml:id="_9284_12354">
+      <identifier codeSpace="http://godzilla.bk.tudelft.nl/schemas/infraADE/SurveyResultType">stakeout</identifier>
+    </Definition>
+  </dictionaryEntry>
+  <dictionaryEntry>
+    <Definition gml:id="_9284_12355">
+      <identifier codeSpace="http://godzilla.bk.tudelft.nl/schemas/infraADE/SurveyResultType">average</identifier>
+    </Definition>
+  </dictionaryEntry>
+  <dictionaryEntry>
+    <Definition gml:id="_9284_12356">
+      <identifier codeSpace="http://godzilla.bk.tudelft.nl/schemas/infraADE/SurveyResultType">image</identifier>
+    </Definition>
+  </dictionaryEntry>
+  <dictionaryEntry>
+    <Definition gml:id="_9284_12357">
+      <identifier codeSpace="http://godzilla.bk.tudelft.nl/schemas/infraADE/SurveyResultType">pointCloud</identifier>
+    </Definition>
+  </dictionaryEntry>
+  <dictionaryEntry>
+    <Definition gml:id="_9284_12358">
+      <identifier codeSpace="http://godzilla.bk.tudelft.nl/schemas/infraADE/SurveyResultType">userDefined</identifier>
+    </Definition>
+  </dictionaryEntry>
+</Dictionary>

@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:bldg="http://www.opengis.net/citygml/building/2.0" xmlns:core="http://www.opengis.net/citygml/2.0" xmlns:dem="http://www.opengis.net/citygml/relief/2.0" xmlns:gml="http://www.opengis.net/gml" xmlns:gmllr="http://www.opengis.net/gml/3.3/lr" xmlns:infra="http://godzilla.bk.tudelft.nl/schemas/infraADE" xmlns:luse="http://www.opengis.net/citygml/landuse/2.0" xmlns:tran="http://www.opengis.net/citygml/transportation/2.0" xmlns:veg="http://www.opengis.net/citygml/vegetation/2.0" xmlns:wtr="http://www.opengis.net/citygml/waterbody/2.0" elementFormDefault="qualified" targetNamespace="http://godzilla.bk.tudelft.nl/schemas/infraADE" version="0.1">
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:bldg="http://www.opengis.net/citygml/building/2.0" 
+	xmlns:core="http://www.opengis.net/citygml/2.0" 
+	xmlns:dem="http://www.opengis.net/citygml/relief/2.0" 
+	xmlns:gml="http://www.opengis.net/gml" 
+	xmlns:gmllr="http://www.opengis.net/gml/3.3/lr" 
+	xmlns:infra="http://godzilla.bk.tudelft.nl/schemas/infraADE" 
+	xmlns:luse="http://www.opengis.net/citygml/landuse/2.0" 
+	xmlns:tran="http://www.opengis.net/citygml/transportation/2.0" 
+	xmlns:veg="http://www.opengis.net/citygml/vegetation/2.0" 
+	xmlns:wtr="http://www.opengis.net/citygml/waterbody/2.0" 
+	elementFormDefault="qualified" 
+	targetNamespace="http://godzilla.bk.tudelft.nl/schemas/infraADE" 
+	version="0.1">
   <import namespace="http://www.opengis.net/citygml/2.0" schemaLocation="http://schemas.opengis.net/citygml/2.0/cityGMLBase.xsd"/>
   <import namespace="http://www.opengis.net/citygml/building/2.0" schemaLocation="http://schemas.opengis.net/citygml/building/2.0/building.xsd"/>
   <import namespace="http://www.opengis.net/citygml/landuse/2.0" schemaLocation="http://schemas.opengis.net/citygml/landuse/2.0/landUse.xsd"/>
@@ -699,7 +713,7 @@
         <sequence>
           <element name="fromFeature" type="gml:ReferenceType"/>
           <element name="fromRole" type="string"/>
-        	<element name="toFeature" type="gml:ReferenceType"/>
+          <element name="toFeature" type="gml:ReferenceType"/>
           <element name="toRole" type="string"/>
         </sequence>
       </extension>
@@ -1346,7 +1360,7 @@
           <element name="superficieID" type="infra:IDPropertyType"/>
           <element minOccurs="0" name="type" type="string"/>
           <element maxOccurs="unbounded" name="ownership" type="infra:OwnershipPropertyType"/>
-        	<element minOccurs="0" name="encumberingFeature" type="gml:ReferenceType"/>
+          <element minOccurs="0" name="encumberingFeature" type="gml:ReferenceType"/>
           <element name="encumbranceScheme" type="infra:StatementPropertyType"/>
         </sequence>
       </extension>

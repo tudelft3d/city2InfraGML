@@ -32,7 +32,7 @@
 	http://www.opengis.net/citygml/cityobjectgroup/2.0 http://schemas.opengis.net/citygml/cityobjectgroup/2.0/cityObjectGroup.xsd
 	http://www.opengis.net/gml/3.3/gmll http://schemas.opengis.net/gml/3.3/linearRef.xsd
 	http://www.opengis.net/citygml/tunnel/2.0 http://schemas.opengis.net/citygml/tunnel/2.0/tunnel.xsd
-	http://godzilla.bk.tudelft.nl/schemas/3DMD_ADE CityGML_Infra_ADE.xsd">
+	http://godzilla.bk.tudelft.nl/schemas/infraADE CityGML_Infra_ADE.xsd">
 	
 	<!-- ===================== Note: These are just sample values!! ===================== -->
 	
@@ -58,15 +58,6 @@
 				</gml:Envelope>
 			</gml:boundedBy>
 			<creationDate>2006-11-24</creationDate>
-			<externalReference>
-				<informationSystem>file:///L:/FB43_GeoDatZ/2006172_Laermkartierung MUNLV/Katasterbehoerde/SO/05974000.zip</informationSystem>
-				<externalObject>
-					<name>HA05974056007140017____002</name>
-				</externalObject>
-			</externalReference>
-			<gen:stringAttribute name="HH-Entstehung">
-				<gen:value>LASER</gen:value>
-			</gen:stringAttribute>
 			<bldg:function>1004</bldg:function>
 			<bldg:measuredHeight uom="m">4.123</bldg:measuredHeight>
 			<bldg:lod1Solid>
